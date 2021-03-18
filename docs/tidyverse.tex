@@ -1,0 +1,2096 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={Tidyverse - aula 1 - Introdução},
+            pdfauthor={Wilson Souza},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{booktabs}
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Tidyverse - aula 1 - Introdução}
+\author{Wilson Souza}
+\date{2021-03-17}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{introduuxe7uxe3o---pacotes}{%
+\chapter{Introdução - Pacotes}\label{introduuxe7uxe3o---pacotes}}
+
+Para começar precisamos instalar os seguintes pacotes:
+
+Ou então, um único pacote \textbf{tidyverse}. Que engloba todos os pacotes acima.
+
+Após instalados precisamos carrega-los. Podemos fazer isso chamando cada um dos pacotes separadamente.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tibble)}
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyr)}
+\KeywordTok{library}\NormalTok{(magrittr) }\CommentTok{# não faz parte do pacote tidyverse, mas é carregado por ele, dada a importância do operador pipe.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'magrittr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:tidyr':
+## 
+##     extract
+\end{verbatim}
+
+Ou então podemos chamar apenas o pacote \emph{tidyverse}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.3.3     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.1
+## v purrr   0.3.4
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x magrittr::extract() masks tidyr::extract()
+## x dplyr::filter()     masks stats::filter()
+## x dplyr::lag()        masks stats::lag()
+## x purrr::set_names()  masks magrittr::set_names()
+\end{verbatim}
+
+Vamos trabalhar \textbf{algumas} funções destes pacotes.
+
+\hypertarget{do-pacote-tibble-iremos-trabalhar-as-seguintes-funuxe7uxf5es}{%
+\subsection{\texorpdfstring{Do pacote \emph{tibble} iremos trabalhar as seguintes funções:}{Do pacote tibble iremos trabalhar as seguintes funções:}}\label{do-pacote-tibble-iremos-trabalhar-as-seguintes-funuxe7uxf5es}}
+
+\begin{itemize}
+\tightlist
+\item
+  add\_column()
+\item
+  add\_row()
+\item
+  as\_tibble()
+\item
+  column\_to\_rownames()
+\item
+  remove\_rownames()
+\item
+  rownames\_to\_column()
+\item
+  subsetting
+\end{itemize}
+
+\hypertarget{do-pacote-dplyr-iremos-trabalhas-as-seguintes-funuxe7uxf5es}{%
+\subsection{\texorpdfstring{Do pacote \emph{dplyr} iremos trabalhas as seguintes funções:}{Do pacote dplyr iremos trabalhas as seguintes funções:}}\label{do-pacote-dplyr-iremos-trabalhas-as-seguintes-funuxe7uxf5es}}
+
+\begin{itemize}
+\tightlist
+\item
+  add\_count()
+\item
+  arrange()
+\item
+  bind\_cols()
+\item
+  bind\_rows()
+\item
+  count()
+\item
+  desc()
+\item
+  distinct()
+\item
+  filter()
+\item
+  group\_by()
+\item
+  mutate()
+\item
+  na\_if()
+\item
+  recode\_factor()
+\item
+  relocate()
+\item
+  rename()
+\item
+  select()
+\item
+  slice()
+\item
+  summarise()
+\item
+  transmute()
+\end{itemize}
+
+\hypertarget{do-pacote-tidyr-iremos-trabalhar-as-seguintes-funuxe7uxf5es}{%
+\subsection{\texorpdfstring{Do pacote \emph{tidyr} iremos trabalhar as seguintes funções:}{Do pacote tidyr iremos trabalhar as seguintes funções:}}\label{do-pacote-tidyr-iremos-trabalhar-as-seguintes-funuxe7uxf5es}}
+
+\begin{itemize}
+\tightlist
+\item
+  drop\_na()
+\item
+  fill()
+\item
+  pivot\_longer()
+\item
+  pivot\_wider()
+\item
+  replace\_na()
+\item
+  separate()
+\item
+  unite()
+\end{itemize}
+
+\hypertarget{do-pacote-magrittr-iremos-trabalhar-com-o-operador-chamado-pipe}{%
+\subsection{\texorpdfstring{Do pacote \emph{magrittr} iremos trabalhar com o operador chamado \textbf{pipe}:}{Do pacote magrittr iremos trabalhar com o operador chamado pipe:}}\label{do-pacote-magrittr-iremos-trabalhar-com-o-operador-chamado-pipe}}
+
+\begin{itemize}
+\tightlist
+\item
+  \%\textgreater{}\%\footnote{Vamos utilizar este operador em todos os exemplos}
+\end{itemize}
+
+\hypertarget{importando-os-dados}{%
+\section{Importando os dados}\label{importando-os-dados}}
+
+Caso não souberem importar os dados de um arquivo *.csv ou *.excel presente no seu PC ao fim da aula eu explico. Os exemplos de como as funções trabalham seguem do mesmo jeito.
+
+Vamos trabalhar com conjuntos de dados presentes no R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(mtcars)}
+\NormalTok{carros <-}\StringTok{ }\KeywordTok{as_tibble}\NormalTok{(mtcars, }\DataTypeTok{rownames =} \OtherTok{NA}\NormalTok{)}
+
+\KeywordTok{data}\NormalTok{(iris)}
+\NormalTok{flores <-}\StringTok{ }\KeywordTok{as_tibble}\NormalTok{(iris)}
+
+\KeywordTok{data}\NormalTok{(starwars)}
+\NormalTok{starwars <-}\StringTok{ }\KeywordTok{as_tibble}\NormalTok{(starwars)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{tibble}{%
+\chapter{\texorpdfstring{\emph{tibble}}{tibble}}\label{tibble}}
+
+\hypertarget{as_tibble---converte-um-objeto-do-tipo-matriz-ou-data-frame-para-tbl_df}{%
+\section{as\_tibble() - converte um objeto do tipo matriz ou data frame para tbl\_df}\label{as_tibble---converte-um-objeto-do-tipo-matriz-ou-data-frame-para-tbl_df}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{obj1 <-}\StringTok{ }\NormalTok{carros}
+\NormalTok{obj2 <-}\StringTok{ }\NormalTok{carros }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{data.frame}\NormalTok{()}
+
+\CommentTok{# ["linhas", "colunas"]}
+\NormalTok{obj1[, }\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 32 x 1
+##      mpg
+##    <dbl>
+##  1  21  
+##  2  21  
+##  3  22.8
+##  4  21.4
+##  5  18.7
+##  6  18.1
+##  7  14.3
+##  8  24.4
+##  9  22.8
+## 10  19.2
+## # ... with 22 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{obj2[, }\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+## [31] 15.0 21.4
+\end{verbatim}
+
+\hypertarget{add_column---adiciona-uma-coluna-nova-a-planilha}{%
+\section{add\_column() - adiciona uma coluna nova a planilha}\label{add_column---adiciona-uma-coluna-nova-a-planilha}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{add_column}\NormalTok{(}\DataTypeTok{teste =} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 32 x 12
+##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb teste
+##    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1  21       6  160    110  3.9   2.62  16.5     0     1     4     4     0
+##  2  21       6  160    110  3.9   2.88  17.0     0     1     4     4     0
+##  3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1     0
+##  4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1     0
+##  5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2     0
+##  6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1     0
+##  7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4     0
+##  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2     0
+##  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2     0
+## 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4     0
+## # ... with 22 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 32 x 11
+##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##  * <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+## # ... with 22 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{add_column}\NormalTok{(}\DataTypeTok{teste =} \DecValTok{0}\NormalTok{, }\DataTypeTok{.before =} \StringTok{"mpg"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 32 x 12
+##    teste   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1     0  21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2     0  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3     0  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4     0  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5     0  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6     0  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7     0  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8     0  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9     0  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10     0  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+## # ... with 22 more rows
+\end{verbatim}
+
+\hypertarget{add_row---adiciona-uma-nova-linha-a-planilha}{%
+\section{add\_row() - adiciona uma nova linha a planilha}\label{add_row---adiciona-uma-nova-linha-a-planilha}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{add_row}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 33 x 11
+##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##  * <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+## # ... with 23 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 32 x 11
+##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##  * <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+## # ... with 22 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{add_row}\NormalTok{(}\DataTypeTok{.before =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 33 x 11
+##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##  * <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1  NA      NA   NA     NA NA    NA     NA      NA    NA    NA    NA
+##  2  21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  3  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  4  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  5  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  6  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  7  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  8  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  9  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+## 10  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## # ... with 23 more rows
+\end{verbatim}
+
+\hypertarget{remove_rownames-e-column_to_rownames---remove-os-nomes-das-colunas-e-adiciona-um-nome-as-colunas}{%
+\section{remove\_rownames() e column\_to\_rownames() - Remove os nomes das colunas e adiciona um nome as colunas}\label{remove_rownames-e-column_to_rownames---remove-os-nomes-das-colunas-e-adiciona-um-nome-as-colunas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{add_column}\NormalTok{(}\DataTypeTok{teste =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"b"}\NormalTok{,}\StringTok{"c"}\NormalTok{,}\StringTok{"d"}\NormalTok{,}\StringTok{"e"}\NormalTok{,}\StringTok{"f"}\NormalTok{,}\StringTok{"g"}\NormalTok{,}\StringTok{"h"}\NormalTok{,}\StringTok{"i"}\NormalTok{,}\StringTok{"j"}\NormalTok{,}\StringTok{"k"}\NormalTok{,}\StringTok{"l"}\NormalTok{,}\StringTok{"m"}\NormalTok{,}\StringTok{"n"}\NormalTok{,}\StringTok{"o"}\NormalTok{,}\StringTok{"p"}\NormalTok{,}\StringTok{"q"}\NormalTok{,}\StringTok{"r"}\NormalTok{,}\StringTok{"s"}\NormalTok{,}\StringTok{"t"}\NormalTok{,}\StringTok{"u"}\NormalTok{,}\StringTok{"v"}\NormalTok{,}\StringTok{"w"}\NormalTok{,}\StringTok{"x"}\NormalTok{,}\StringTok{"y"}\NormalTok{,}\StringTok{"z"}\NormalTok{,}\StringTok{"aa"}\NormalTok{,}\StringTok{"bb"}\NormalTok{,}\StringTok{"cc"}\NormalTok{,}\StringTok{"dd"}\NormalTok{,}\StringTok{"ee"}\NormalTok{,}\StringTok{"ff"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{remove_rownames}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{column_to_rownames}\NormalTok{(}\StringTok{"teste"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## a  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## b  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## c  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+## d  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## e  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+## f  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+## g  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+## h  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## i  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## j  19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## k  17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+## l  16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+## m  17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+## n  15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+## o  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+## p  10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+## q  14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+## r  32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+## s  30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+## t  33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+## u  21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+## v  15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+## w  15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## x  13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+## y  19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+## z  27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+## aa 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+## bb 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+## cc 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+## dd 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+## ee 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+## ff 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+\end{verbatim}
+
+\hypertarget{rownames_to_column---adiciona-o-nome-das-linhas-como-uma-coluna}{%
+\section{rownames\_to\_column() - adiciona o nome das linhas como uma coluna}\label{rownames_to_column---adiciona-o-nome-das-linhas-como-uma-coluna}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{rownames_to_column}\NormalTok{(}\DataTypeTok{var =} \StringTok{"teste"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 32 x 12
+##    teste         mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##    <chr>       <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1 Mazda RX4    21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2 Mazda RX4 ~  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3 Datsun 710   22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4 Hornet 4 D~  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5 Hornet Spo~  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6 Valiant      18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7 Duster 360   14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8 Merc 240D    24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9 Merc 230     22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10 Merc 280     19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+## # ... with 22 more rows
+\end{verbatim}
+
+\hypertarget{subsetting---forma-de-escrita-que-permite-cortarselecionar-a-planilha-em-funuxe7uxe3o-das-linhas-e-colunas}{%
+\section{subsetting - forma de escrita que permite cortar/selecionar a planilha em função das linhas e colunas}\label{subsetting---forma-de-escrita-que-permite-cortarselecionar-a-planilha-em-funuxe7uxe3o-das-linhas-e-colunas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros[}\DecValTok{1}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 11
+##     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+## 1    21     6   160   110   3.9  2.62  16.5     0     1     4     4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros[}\DecValTok{2}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 11
+##     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+## 1    21     6   160   110   3.9  2.88  17.0     0     1     4     4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros[}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 11
+##     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+## 1    21     6   160   110   3.9  2.62  16.5     0     1     4     4
+## 2    21     6   160   110   3.9  2.88  17.0     0     1     4     4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros[, }\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 32 x 1
+##      mpg
+##    <dbl>
+##  1  21  
+##  2  21  
+##  3  22.8
+##  4  21.4
+##  5  18.7
+##  6  18.1
+##  7  14.3
+##  8  24.4
+##  9  22.8
+## 10  19.2
+## # ... with 22 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros[, }\StringTok{"mpg"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 32 x 1
+##      mpg
+##    <dbl>
+##  1  21  
+##  2  21  
+##  3  22.8
+##  4  21.4
+##  5  18.7
+##  6  18.1
+##  7  14.3
+##  8  24.4
+##  9  22.8
+## 10  19.2
+## # ... with 22 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+## [31] 15.0 21.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros[[}\StringTok{"mpg"}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+## [31] 15.0 21.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros[[}\StringTok{"mpg"}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+## [31] 15.0 21.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros}\OperatorTok{$}\NormalTok{mpg}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+## [31] 15.0 21.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{carros[, }\KeywordTok{c}\NormalTok{(}\StringTok{"mpg"}\NormalTok{, }\StringTok{"cyl"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 32 x 2
+##      mpg   cyl
+##    <dbl> <dbl>
+##  1  21       6
+##  2  21       6
+##  3  22.8     4
+##  4  21.4     6
+##  5  18.7     8
+##  6  18.1     6
+##  7  14.3     8
+##  8  24.4     4
+##  9  22.8     4
+## 10  19.2     6
+## # ... with 22 more rows
+\end{verbatim}
+
+\hypertarget{dplyr}{%
+\chapter{\texorpdfstring{\emph{dplyr}}{dplyr}}\label{dplyr}}
+
+\hypertarget{count-e-add_count---conta-o-nuxfamero-de-linhas-em-funuxe7uxe3o-da-variuxe1vel-especificada-adiciona-uma-nova-coluna-com-a-contagem-do-nuxfamero-de-linhas-em-funuxe7uxe3o-da-variuxe1vel-especificada}{%
+\section{count() e add\_count() - conta o número de linhas em função da variável especificada; adiciona uma nova coluna com a contagem do número de linhas em função da variável especificada}\label{count-e-add_count---conta-o-nuxfamero-de-linhas-em-funuxe7uxe3o-da-variuxe1vel-especificada-adiciona-uma-nova-coluna-com-a-contagem-do-nuxfamero-de-linhas-em-funuxe7uxe3o-da-variuxe1vel-especificada}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{count}\NormalTok{(Species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 2
+##   Species        n
+##   <fct>      <int>
+## 1 setosa        50
+## 2 versicolor    50
+## 3 virginica     50
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{add_count}\NormalTok{(Species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 6
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species     n
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>   <int>
+##  1          5.1         3.5          1.4         0.2 setosa     50
+##  2          4.9         3            1.4         0.2 setosa     50
+##  3          4.7         3.2          1.3         0.2 setosa     50
+##  4          4.6         3.1          1.5         0.2 setosa     50
+##  5          5           3.6          1.4         0.2 setosa     50
+##  6          5.4         3.9          1.7         0.4 setosa     50
+##  7          4.6         3.4          1.4         0.3 setosa     50
+##  8          5           3.4          1.5         0.2 setosa     50
+##  9          4.4         2.9          1.4         0.2 setosa     50
+## 10          4.9         3.1          1.5         0.1 setosa     50
+## # ... with 140 more rows
+\end{verbatim}
+
+\hypertarget{arrange---rearranja-as-linhas-em-funuxe7uxe3o-da-variuxe1vel-especificada}{%
+\section{arrange() - rearranja as linhas em função da variável especificada}\label{arrange---rearranja-as-linhas-em-funuxe7uxe3o-da-variuxe1vel-especificada}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(Species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(Species))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>    
+##  1          6.3         3.3          6           2.5 virginica
+##  2          5.8         2.7          5.1         1.9 virginica
+##  3          7.1         3            5.9         2.1 virginica
+##  4          6.3         2.9          5.6         1.8 virginica
+##  5          6.5         3            5.8         2.2 virginica
+##  6          7.6         3            6.6         2.1 virginica
+##  7          4.9         2.5          4.5         1.7 virginica
+##  8          7.3         2.9          6.3         1.8 virginica
+##  9          6.7         2.5          5.8         1.8 virginica
+## 10          7.2         3.6          6.1         2.5 virginica
+## # ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{factor}\NormalTok{(Species, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"versicolor"}\NormalTok{, }\StringTok{"setosa"}\NormalTok{, }\StringTok{"virginica"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>     
+##  1          7           3.2          4.7         1.4 versicolor
+##  2          6.4         3.2          4.5         1.5 versicolor
+##  3          6.9         3.1          4.9         1.5 versicolor
+##  4          5.5         2.3          4           1.3 versicolor
+##  5          6.5         2.8          4.6         1.5 versicolor
+##  6          5.7         2.8          4.5         1.3 versicolor
+##  7          6.3         3.3          4.7         1.6 versicolor
+##  8          4.9         2.4          3.3         1   versicolor
+##  9          6.6         2.9          4.6         1.3 versicolor
+## 10          5.2         2.7          3.9         1.4 versicolor
+## # ... with 140 more rows
+\end{verbatim}
+
+\hypertarget{bind_cols---une-planilhas-em-colunas}{%
+\section{bind\_cols() - une planilhas em colunas}\label{bind_cols---une-planilhas-em-colunas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{parte1 <-}\StringTok{ }\NormalTok{flores[,}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{]}
+\NormalTok{parte2 <-}\StringTok{ }\NormalTok{flores[,}\DecValTok{3}\OperatorTok{:}\DecValTok{5}\NormalTok{]}
+
+\KeywordTok{bind_cols}\NormalTok{(parte1, parte2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 140 more rows
+\end{verbatim}
+
+\hypertarget{bind_rows---une-planilhas-em-linhas}{%
+\section{bind\_rows() - une planilhas em linhas}\label{bind_rows---une-planilhas-em-linhas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{parte1 <-}\StringTok{ }\NormalTok{flores[}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,]}
+\NormalTok{parte2 <-}\StringTok{ }\NormalTok{flores[}\DecValTok{11}\OperatorTok{:}\DecValTok{150}\NormalTok{,]}
+
+\KeywordTok{bind_rows}\NormalTok{(parte1, parte2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 140 more rows
+\end{verbatim}
+
+\hypertarget{distinct---remove-as-linhas-que-suxe3o-exatamente-iguais}{%
+\section{distinct() - remove as linhas que são exatamente iguais}\label{distinct---remove-as-linhas-que-suxe3o-exatamente-iguais}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{distinct}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 149 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 139 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{distinct}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{count}\NormalTok{(Species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 2
+##   Species        n
+##   <fct>      <int>
+## 1 setosa        50
+## 2 versicolor    50
+## 3 virginica     49
+\end{verbatim}
+
+\hypertarget{filter---filtra-as-linhas-que-satisfauxe7uxe3o-alguma-condiuxe7uxe3o}{%
+\section{filter() - filtra as linhas que satisfação alguma condição}\label{filter---filtra-as-linhas-que-satisfauxe7uxe3o-alguma-condiuxe7uxe3o}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(Species }\OperatorTok{==}\StringTok{ "setosa"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 50 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 40 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(Species }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"setosa"}\NormalTok{, }\StringTok{"virginica"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 100 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 90 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(Sepal.Length }\OperatorTok{>=}\StringTok{ }\KeywordTok{mean}\NormalTok{(Sepal.Length))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 70 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>     
+##  1          7           3.2          4.7         1.4 versicolor
+##  2          6.4         3.2          4.5         1.5 versicolor
+##  3          6.9         3.1          4.9         1.5 versicolor
+##  4          6.5         2.8          4.6         1.5 versicolor
+##  5          6.3         3.3          4.7         1.6 versicolor
+##  6          6.6         2.9          4.6         1.3 versicolor
+##  7          5.9         3            4.2         1.5 versicolor
+##  8          6           2.2          4           1   versicolor
+##  9          6.1         2.9          4.7         1.4 versicolor
+## 10          6.7         3.1          4.4         1.4 versicolor
+## # ... with 60 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(Species }\OperatorTok{==}\StringTok{ "setosa"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(Sepal.Length }\OperatorTok{>=}\StringTok{ }\KeywordTok{mean}\NormalTok{(Sepal.Length))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 22 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          5.4         3.9          1.7         0.4 setosa 
+##  3          5.4         3.7          1.5         0.2 setosa 
+##  4          5.8         4            1.2         0.2 setosa 
+##  5          5.7         4.4          1.5         0.4 setosa 
+##  6          5.4         3.9          1.3         0.4 setosa 
+##  7          5.1         3.5          1.4         0.3 setosa 
+##  8          5.7         3.8          1.7         0.3 setosa 
+##  9          5.1         3.8          1.5         0.3 setosa 
+## 10          5.4         3.4          1.7         0.2 setosa 
+## # ... with 12 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(Petal.Length }\OperatorTok{>=}\StringTok{ }\KeywordTok{mean}\NormalTok{(Petal.Length) }\OperatorTok{&}\StringTok{ }\NormalTok{Petal.Width }\OperatorTok{>=}\StringTok{ }\KeywordTok{mean}\NormalTok{(Petal.Width))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 89 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>     
+##  1          7           3.2          4.7         1.4 versicolor
+##  2          6.4         3.2          4.5         1.5 versicolor
+##  3          6.9         3.1          4.9         1.5 versicolor
+##  4          5.5         2.3          4           1.3 versicolor
+##  5          6.5         2.8          4.6         1.5 versicolor
+##  6          5.7         2.8          4.5         1.3 versicolor
+##  7          6.3         3.3          4.7         1.6 versicolor
+##  8          6.6         2.9          4.6         1.3 versicolor
+##  9          5.2         2.7          3.9         1.4 versicolor
+## 10          5.9         3            4.2         1.5 versicolor
+## # ... with 79 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(Petal.Length }\OperatorTok{>=}\StringTok{ }\KeywordTok{mean}\NormalTok{(Petal.Length) }\OperatorTok{&}\StringTok{ }\NormalTok{Petal.Width }\OperatorTok{>=}\StringTok{ }\KeywordTok{mean}\NormalTok{(Petal.Width)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{count}\NormalTok{(Species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 2
+##   Species        n
+##   <fct>      <int>
+## 1 versicolor    39
+## 2 virginica     50
+\end{verbatim}
+
+\hypertarget{group_by---agrupa-as-linhas-em-funuxe7uxe3o-dos-valores-de-alguma-variuxe1vel}{%
+\section{group\_by() - agrupa as linhas em função dos valores de alguma variável}\label{group_by---agrupa-as-linhas-em-funuxe7uxe3o-dos-valores-de-alguma-variuxe1vel}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Ver esta função juntamente com mutate(), transmute() e summarise()}
+
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+## # Groups:   Species [3]
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 140 more rows
+\end{verbatim}
+
+\hypertarget{mutate-e-transmute---adiciona-novas-variuxe1veis-e-preserva-as-existentes-adiciona-novas-variuxe1veis-e-nuxe3o-preserva-as-existentes}{%
+\section{mutate() e transmute() - adiciona novas variáveis e preserva as existentes; adiciona novas variáveis e não preserva as existentes}\label{mutate-e-transmute---adiciona-novas-variuxe1veis-e-preserva-as-existentes-adiciona-novas-variuxe1veis-e-nuxe3o-preserva-as-existentes}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{teste =}\NormalTok{ Petal.Length }\OperatorTok{+}\StringTok{ }\NormalTok{Sepal.Length)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 6
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species teste
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>   <dbl>
+##  1          5.1         3.5          1.4         0.2 setosa    6.5
+##  2          4.9         3            1.4         0.2 setosa    6.3
+##  3          4.7         3.2          1.3         0.2 setosa    6  
+##  4          4.6         3.1          1.5         0.2 setosa    6.1
+##  5          5           3.6          1.4         0.2 setosa    6.4
+##  6          5.4         3.9          1.7         0.4 setosa    7.1
+##  7          4.6         3.4          1.4         0.3 setosa    6  
+##  8          5           3.4          1.5         0.2 setosa    6.5
+##  9          4.4         2.9          1.4         0.2 setosa    5.8
+## 10          4.9         3.1          1.5         0.1 setosa    6.4
+## # ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Species) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{PL_media =} \KeywordTok{mean}\NormalTok{(Petal.Length))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 6
+## # Groups:   Species [3]
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species PL_media
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>      <dbl>
+##  1          5.1         3.5          1.4         0.2 setosa      1.46
+##  2          4.9         3            1.4         0.2 setosa      1.46
+##  3          4.7         3.2          1.3         0.2 setosa      1.46
+##  4          4.6         3.1          1.5         0.2 setosa      1.46
+##  5          5           3.6          1.4         0.2 setosa      1.46
+##  6          5.4         3.9          1.7         0.4 setosa      1.46
+##  7          4.6         3.4          1.4         0.3 setosa      1.46
+##  8          5           3.4          1.5         0.2 setosa      1.46
+##  9          4.4         2.9          1.4         0.2 setosa      1.46
+## 10          4.9         3.1          1.5         0.1 setosa      1.46
+## # ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Species) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{transmute}\NormalTok{(PL.mé}\DataTypeTok{dia =} \KeywordTok{mean}\NormalTok{(Petal.Length))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 2
+## # Groups:   Species [3]
+##    Species PL.média
+##    <fct>      <dbl>
+##  1 setosa      1.46
+##  2 setosa      1.46
+##  3 setosa      1.46
+##  4 setosa      1.46
+##  5 setosa      1.46
+##  6 setosa      1.46
+##  7 setosa      1.46
+##  8 setosa      1.46
+##  9 setosa      1.46
+## 10 setosa      1.46
+## # ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Species) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{transmute}\NormalTok{(PL.mé}\DataTypeTok{dia =} \KeywordTok{mean}\NormalTok{(Petal.Length), }
+\NormalTok{            SL.mé}\DataTypeTok{dia =} \KeywordTok{mean}\NormalTok{(Sepal.Length))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 3
+## # Groups:   Species [3]
+##    Species PL.média SL.média
+##    <fct>      <dbl>    <dbl>
+##  1 setosa      1.46     5.01
+##  2 setosa      1.46     5.01
+##  3 setosa      1.46     5.01
+##  4 setosa      1.46     5.01
+##  5 setosa      1.46     5.01
+##  6 setosa      1.46     5.01
+##  7 setosa      1.46     5.01
+##  8 setosa      1.46     5.01
+##  9 setosa      1.46     5.01
+## 10 setosa      1.46     5.01
+## # ... with 140 more rows
+\end{verbatim}
+
+\hypertarget{na_if---substitui-o-valor-especificado-por-na}{%
+\section{na\_if() - Substitui o valor especificado por NA}\label{na_if---substitui-o-valor-especificado-por-na}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Species =} \KeywordTok{na_if}\NormalTok{(Species, }\StringTok{"setosa"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5          1.4         0.2 <NA>   
+##  2          4.9         3            1.4         0.2 <NA>   
+##  3          4.7         3.2          1.3         0.2 <NA>   
+##  4          4.6         3.1          1.5         0.2 <NA>   
+##  5          5           3.6          1.4         0.2 <NA>   
+##  6          5.4         3.9          1.7         0.4 <NA>   
+##  7          4.6         3.4          1.4         0.3 <NA>   
+##  8          5           3.4          1.5         0.2 <NA>   
+##  9          4.4         2.9          1.4         0.2 <NA>   
+## 10          4.9         3.1          1.5         0.1 <NA>   
+## # ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Petal.Length =} \KeywordTok{na_if}\NormalTok{(Petal.Length, }\FloatTok{1.4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5         NA           0.2 setosa 
+##  2          4.9         3           NA           0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6         NA           0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4         NA           0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9         NA           0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Sepal.Length =} \KeywordTok{na_if}\NormalTok{(Sepal.Length, }\FloatTok{5.1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1         NA           3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 140 more rows
+\end{verbatim}
+
+\hypertarget{recode-e-recode_factor---substitui-um-determinado-valor-por-outro-se-variuxe1vel-for-nuxfamerica-usar-recode-se-for-fator-usar-recode_factor}{%
+\section{recode() e recode\_factor() - substitui um determinado valor por outro, se variável for númerica usar recode(), se for fator usar recode\_factor()}\label{recode-e-recode_factor---substitui-um-determinado-valor-por-outro-se-variuxe1vel-for-nuxfamerica-usar-recode-se-for-fator-usar-recode_factor}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Sepal.Length =} \KeywordTok{recode}\NormalTok{(Sepal.Length, }\StringTok{`}\DataTypeTok{5.1}\StringTok{`}\NormalTok{ =}\StringTok{ }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          0           3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Species =} \KeywordTok{recode_factor}\NormalTok{(Species, }\DataTypeTok{setosa =} \StringTok{"sts"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5          1.4         0.2 sts    
+##  2          4.9         3            1.4         0.2 sts    
+##  3          4.7         3.2          1.3         0.2 sts    
+##  4          4.6         3.1          1.5         0.2 sts    
+##  5          5           3.6          1.4         0.2 sts    
+##  6          5.4         3.9          1.7         0.4 sts    
+##  7          4.6         3.4          1.4         0.3 sts    
+##  8          5           3.4          1.5         0.2 sts    
+##  9          4.4         2.9          1.4         0.2 sts    
+## 10          4.9         3.1          1.5         0.1 sts    
+## # ... with 140 more rows
+\end{verbatim}
+
+\hypertarget{relocate---altera-a-ordem-das-variuxe1veis}{%
+\section{relocate() - altera a ordem das variáveis}\label{relocate---altera-a-ordem-das-variuxe1veis}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{relocate}\NormalTok{(Species, }\DataTypeTok{.before =}\NormalTok{ Sepal.Length)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Species Sepal.Length Sepal.Width Petal.Length Petal.Width
+##    <fct>          <dbl>       <dbl>        <dbl>       <dbl>
+##  1 setosa           5.1         3.5          1.4         0.2
+##  2 setosa           4.9         3            1.4         0.2
+##  3 setosa           4.7         3.2          1.3         0.2
+##  4 setosa           4.6         3.1          1.5         0.2
+##  5 setosa           5           3.6          1.4         0.2
+##  6 setosa           5.4         3.9          1.7         0.4
+##  7 setosa           4.6         3.4          1.4         0.3
+##  8 setosa           5           3.4          1.5         0.2
+##  9 setosa           4.4         2.9          1.4         0.2
+## 10 setosa           4.9         3.1          1.5         0.1
+## # ... with 140 more rows
+\end{verbatim}
+
+\hypertarget{rename---altera-o-nome-das-variuxe1veis}{%
+\section{rename() - altera o nome das variáveis}\label{rename---altera-o-nome-das-variuxe1veis}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{sp =}\NormalTok{ Species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width sp    
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct> 
+##  1          5.1         3.5          1.4         0.2 setosa
+##  2          4.9         3            1.4         0.2 setosa
+##  3          4.7         3.2          1.3         0.2 setosa
+##  4          4.6         3.1          1.5         0.2 setosa
+##  5          5           3.6          1.4         0.2 setosa
+##  6          5.4         3.9          1.7         0.4 setosa
+##  7          4.6         3.4          1.4         0.3 setosa
+##  8          5           3.4          1.5         0.2 setosa
+##  9          4.4         2.9          1.4         0.2 setosa
+## 10          4.9         3.1          1.5         0.1 setosa
+## # ... with 140 more rows
+\end{verbatim}
+
+\hypertarget{select---seleciona-variuxe1veis}{%
+\section{select() - Seleciona variáveis}\label{select---seleciona-variuxe1veis}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(Species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 1
+##    Species
+##    <fct>  
+##  1 setosa 
+##  2 setosa 
+##  3 setosa 
+##  4 setosa 
+##  5 setosa 
+##  6 setosa 
+##  7 setosa 
+##  8 setosa 
+##  9 setosa 
+## 10 setosa 
+## # ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\KeywordTok{starts_with}\NormalTok{(}\StringTok{"Sepal"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 2
+##    Sepal.Length Sepal.Width
+##           <dbl>       <dbl>
+##  1          5.1         3.5
+##  2          4.9         3  
+##  3          4.7         3.2
+##  4          4.6         3.1
+##  5          5           3.6
+##  6          5.4         3.9
+##  7          4.6         3.4
+##  8          5           3.4
+##  9          4.4         2.9
+## 10          4.9         3.1
+## # ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\KeywordTok{ends_with}\NormalTok{(}\StringTok{"Length"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 2
+##    Sepal.Length Petal.Length
+##           <dbl>        <dbl>
+##  1          5.1          1.4
+##  2          4.9          1.4
+##  3          4.7          1.3
+##  4          4.6          1.5
+##  5          5            1.4
+##  6          5.4          1.7
+##  7          4.6          1.4
+##  8          5            1.5
+##  9          4.4          1.4
+## 10          4.9          1.5
+## # ... with 140 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{select}\NormalTok{(Species, Sepal.Length)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 150 x 2
+##    Species Sepal.Length
+##    <fct>          <dbl>
+##  1 setosa           5.1
+##  2 setosa           4.9
+##  3 setosa           4.7
+##  4 setosa           4.6
+##  5 setosa           5  
+##  6 setosa           5.4
+##  7 setosa           4.6
+##  8 setosa           5  
+##  9 setosa           4.4
+## 10 setosa           4.9
+## # ... with 140 more rows
+\end{verbatim}
+
+\hypertarget{slice---seleciona-linhas}{%
+\section{slice() - Seleciona linhas}\label{slice---seleciona-linhas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{slice}\NormalTok{(}\DecValTok{3}\OperatorTok{:}\DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 13 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          4.7         3.2          1.3         0.2 setosa 
+##  2          4.6         3.1          1.5         0.2 setosa 
+##  3          5           3.6          1.4         0.2 setosa 
+##  4          5.4         3.9          1.7         0.4 setosa 
+##  5          4.6         3.4          1.4         0.3 setosa 
+##  6          5           3.4          1.5         0.2 setosa 
+##  7          4.4         2.9          1.4         0.2 setosa 
+##  8          4.9         3.1          1.5         0.1 setosa 
+##  9          5.4         3.7          1.5         0.2 setosa 
+## 10          4.8         3.4          1.6         0.2 setosa 
+## 11          4.8         3            1.4         0.1 setosa 
+## 12          4.3         3            1.1         0.1 setosa 
+## 13          5.8         4            1.2         0.2 setosa
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{slice_sample}\NormalTok{(}\DataTypeTok{n =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>     
+##  1          5.4         3            4.5         1.5 versicolor
+##  2          6.4         2.8          5.6         2.1 virginica 
+##  3          5.7         3.8          1.7         0.3 setosa    
+##  4          6.7         3.3          5.7         2.1 virginica 
+##  5          6.3         3.3          6           2.5 virginica 
+##  6          7.7         2.8          6.7         2   virginica 
+##  7          5.3         3.7          1.5         0.2 setosa    
+##  8          5.6         3            4.1         1.3 versicolor
+##  9          6.3         2.9          5.6         1.8 virginica 
+## 10          5.8         2.7          5.1         1.9 virginica
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{slice_min}\NormalTok{(Petal.Length, }\DataTypeTok{n =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 11 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          4.6         3.6          1           0.2 setosa 
+##  2          4.3         3            1.1         0.1 setosa 
+##  3          5.8         4            1.2         0.2 setosa 
+##  4          5           3.2          1.2         0.2 setosa 
+##  5          4.7         3.2          1.3         0.2 setosa 
+##  6          5.4         3.9          1.3         0.4 setosa 
+##  7          5.5         3.5          1.3         0.2 setosa 
+##  8          4.4         3            1.3         0.2 setosa 
+##  9          5           3.5          1.3         0.3 setosa 
+## 10          4.5         2.3          1.3         0.3 setosa 
+## 11          4.4         3.2          1.3         0.2 setosa
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{slice_max}\NormalTok{(Petal.Length, }\DataTypeTok{n =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 11 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>    
+##  1          7.7         2.6          6.9         2.3 virginica
+##  2          7.7         3.8          6.7         2.2 virginica
+##  3          7.7         2.8          6.7         2   virginica
+##  4          7.6         3            6.6         2.1 virginica
+##  5          7.9         3.8          6.4         2   virginica
+##  6          7.3         2.9          6.3         1.8 virginica
+##  7          7.2         3.6          6.1         2.5 virginica
+##  8          7.4         2.8          6.1         1.9 virginica
+##  9          7.7         3            6.1         2.3 virginica
+## 10          6.3         3.3          6           2.5 virginica
+## 11          7.2         3.2          6           1.8 virginica
+\end{verbatim}
+
+\hypertarget{summarise---sumariza-os-dados}{%
+\section{summarise() - sumariza os dados}\label{summarise---sumariza-os-dados}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flores }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Species) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{N =} \KeywordTok{n}\NormalTok{(),}
+\NormalTok{            PL.mé}\DataTypeTok{dia =} \KeywordTok{mean}\NormalTok{(Petal.Length),}
+\NormalTok{            SL.mé}\DataTypeTok{dia =} \KeywordTok{mean}\NormalTok{(Sepal.Length),}
+\NormalTok{            PW.mé}\DataTypeTok{dia =} \KeywordTok{mean}\NormalTok{(Petal.Width),}
+\NormalTok{            SW.mé}\DataTypeTok{dia =} \KeywordTok{mean}\NormalTok{(Sepal.Width))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 6
+##   Species        N PL.média SL.média PW.média SW.média
+##   <fct>      <int>    <dbl>    <dbl>    <dbl>    <dbl>
+## 1 setosa        50     1.46     5.01    0.246     3.43
+## 2 versicolor    50     4.26     5.94    1.33      2.77
+## 3 virginica     50     5.55     6.59    2.03      2.97
+\end{verbatim}
+
+\hypertarget{tidyr}{%
+\chapter{\texorpdfstring{\emph{tidyr}}{tidyr}}\label{tidyr}}
+
+\hypertarget{drop_na---remove-as-linhas-com-na}{%
+\section{drop\_na() - remove as linhas com NA}\label{drop_na---remove-as-linhas-com-na}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(hair_color) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{drop_na}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 82 x 1
+##    hair_color   
+##    <chr>        
+##  1 blond        
+##  2 none         
+##  3 brown        
+##  4 brown, grey  
+##  5 brown        
+##  6 black        
+##  7 auburn, white
+##  8 blond        
+##  9 auburn, grey 
+## 10 brown        
+## # ... with 72 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{drop_na}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 14
+##   name     height  mass hair_color  skin_color eye_color birth_year sex   gender
+##   <chr>     <int> <dbl> <chr>       <chr>      <chr>          <dbl> <chr> <chr> 
+## 1 Luke Sk~    172    77 blond       fair       blue            19   male  mascu~
+## 2 Obi-Wan~    182    77 auburn, wh~ fair       blue-gray       57   male  mascu~
+## 3 Anakin ~    188    84 blond       fair       blue            41.9 male  mascu~
+## 4 Chewbac~    228   112 brown       unknown    blue           200   male  mascu~
+## 5 Wedge A~    170    77 brown       fair       hazel           21   male  mascu~
+## 6 Darth M~    175    80 none        red        yellow          54   male  mascu~
+## # ... with 5 more variables: homeworld <chr>, species <chr>, films <list>,
+## #   vehicles <list>, starships <list>
+\end{verbatim}
+
+\hypertarget{replace_na---substitui-os-valores-de-na-por-outro-valor}{%
+\section{replace\_na() - Substitui os valores de NA por outro valor}\label{replace_na---substitui-os-valores-de-na-por-outro-valor}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{replace_na}\NormalTok{(}\KeywordTok{list}\NormalTok{(}\DataTypeTok{hair_color =} \StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 87 x 14
+##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
+##    <chr>    <int> <dbl> <chr>       <chr>      <chr>          <dbl> <chr> <chr> 
+##  1 Luke S~    172    77 blond       fair       blue            19   male  mascu~
+##  2 C-3PO      167    75 orange      gold       yellow         112   none  mascu~
+##  3 R2-D2       96    32 orange      white, bl~ red             33   none  mascu~
+##  4 Darth ~    202   136 none        white      yellow          41.9 male  mascu~
+##  5 Leia O~    150    49 brown       light      brown           19   fema~ femin~
+##  6 Owen L~    178   120 brown, grey light      blue            52   male  mascu~
+##  7 Beru W~    165    75 brown       light      blue            47   fema~ femin~
+##  8 R5-D4       97    32 orange      white, red red             NA   none  mascu~
+##  9 Biggs ~    183    84 black       light      brown           24   male  mascu~
+## 10 Obi-Wa~    182    77 auburn, wh~ fair       blue-gray       57   male  mascu~
+## # ... with 77 more rows, and 5 more variables: homeworld <chr>, species <chr>,
+## #   films <list>, vehicles <list>, starships <list>
+\end{verbatim}
+
+\hypertarget{pivot_longer-e-pivot_wider---aumenta-o-nuxfamero-de-linhas-e-diminui-o-nuxfamero-de-colunas-aumenta-o-nuxfamero-de-colunas-e-diminui-o-nuxfamero-de-linhas}{%
+\section{pivot\_longer() e pivot\_wider() - Aumenta o número de linhas e diminui o número de colunas; aumenta o número de colunas e diminui o número de linhas}\label{pivot_longer-e-pivot_wider---aumenta-o-nuxfamero-de-linhas-e-diminui-o-nuxfamero-de-colunas-aumenta-o-nuxfamero-de-colunas-e-diminui-o-nuxfamero-de-linhas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars[}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,] }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(homeworld, skin_color, mass) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pivot_wider}\NormalTok{(}\DataTypeTok{names_from =}\NormalTok{ homeworld, }\DataTypeTok{values_from =}\NormalTok{ mass, }\DataTypeTok{values_fn =}\NormalTok{ list)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 5
+##   skin_color  Tatooine  Naboo     Alderaan  Stewjon  
+##   <chr>       <list>    <list>    <list>    <list>   
+## 1 fair        <dbl [1]> <NULL>    <NULL>    <dbl [1]>
+## 2 gold        <dbl [1]> <NULL>    <NULL>    <NULL>   
+## 3 white, blue <NULL>    <dbl [1]> <NULL>    <NULL>   
+## 4 white       <dbl [1]> <NULL>    <NULL>    <NULL>   
+## 5 light       <dbl [3]> <NULL>    <dbl [1]> <NULL>   
+## 6 white, red  <dbl [1]> <NULL>    <NULL>    <NULL>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars[}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,] }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(homeworld, skin_color, mass) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pivot_wider}\NormalTok{(}\DataTypeTok{names_from =}\NormalTok{ homeworld, }\DataTypeTok{values_from =}\NormalTok{ mass, }\DataTypeTok{values_fn =}\NormalTok{ list) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{view}\NormalTok{()}
+
+\NormalTok{starwars[}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,] }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(homeworld, skin_color, mass) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pivot_wider}\NormalTok{(}\DataTypeTok{names_from =}\NormalTok{ homeworld, }\DataTypeTok{values_from =}\NormalTok{ mass) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{unchop}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\OperatorTok{:}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Values are not uniquely identified; output will contain list-cols.
+## * Use `values_fn = list` to suppress this warning.
+## * Use `values_fn = length` to identify where the duplicates arise
+## * Use `values_fn = {summary_fun}` to summarise duplicates
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 8 x 5
+##   skin_color  Tatooine Naboo Alderaan Stewjon
+##   <chr>          <dbl> <dbl>    <dbl>   <dbl>
+## 1 fair              77    NA       NA      77
+## 2 gold              75    NA       NA      NA
+## 3 white, blue       NA    32       NA      NA
+## 4 white            136    NA       NA      NA
+## 5 light            120    NA       49      NA
+## 6 light             75    NA       49      NA
+## 7 light             84    NA       49      NA
+## 8 white, red        32    NA       NA      NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars[}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,] }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(skin_color, homeworld, mass) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{pivot_wider}\NormalTok{(}\DataTypeTok{names_from =}\NormalTok{ homeworld, }\DataTypeTok{values_from =}\NormalTok{ mass) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{pivot_longer}\NormalTok{(}\DataTypeTok{cols =} \DecValTok{2}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{names_to =} \StringTok{"homerworld"}\NormalTok{, }\DataTypeTok{values_to =} \StringTok{"mass"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Values are not uniquely identified; output will contain list-cols.
+## * Use `values_fn = list` to suppress this warning.
+## * Use `values_fn = length` to identify where the duplicates arise
+## * Use `values_fn = {summary_fun}` to summarise duplicates
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 24 x 3
+##    skin_color  homerworld mass     
+##    <chr>       <chr>      <list>   
+##  1 fair        Tatooine   <dbl [1]>
+##  2 fair        Naboo      <NULL>   
+##  3 fair        Alderaan   <NULL>   
+##  4 fair        Stewjon    <dbl [1]>
+##  5 gold        Tatooine   <dbl [1]>
+##  6 gold        Naboo      <NULL>   
+##  7 gold        Alderaan   <NULL>   
+##  8 gold        Stewjon    <NULL>   
+##  9 white, blue Tatooine   <NULL>   
+## 10 white, blue Naboo      <dbl [1]>
+## # ... with 14 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars[}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,] }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(homeworld, skin_color, mass) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{pivot_wider}\NormalTok{(}\DataTypeTok{names_from =}\NormalTok{ homeworld, }\DataTypeTok{values_from =}\NormalTok{ mass) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{pivot_longer}\NormalTok{(}\DataTypeTok{cols =} \DecValTok{2}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{names_to =} \StringTok{"homeworld"}\NormalTok{, }\DataTypeTok{values_to =} \StringTok{"mass"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{unchop}\NormalTok{(}\KeywordTok{everything}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{drop_na}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Values are not uniquely identified; output will contain list-cols.
+## * Use `values_fn = list` to suppress this warning.
+## * Use `values_fn = length` to identify where the duplicates arise
+## * Use `values_fn = {summary_fun}` to summarise duplicates
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##    skin_color  homeworld  mass
+##    <chr>       <chr>     <dbl>
+##  1 fair        Tatooine     77
+##  2 fair        Stewjon      77
+##  3 gold        Tatooine     75
+##  4 white, blue Naboo        32
+##  5 white       Tatooine    136
+##  6 light       Tatooine    120
+##  7 light       Tatooine     75
+##  8 light       Tatooine     84
+##  9 light       Alderaan     49
+## 10 white, red  Tatooine     32
+\end{verbatim}
+
+\hypertarget{separate-e-unite---separa-uma-coluna-em-muxfaltiplas-colunas-une-muxfaltiplas-colunas}{%
+\section{separate() e unite() - Separa uma coluna em múltiplas colunas; Une múltiplas colunas}\label{separate-e-unite---separa-uma-coluna-em-muxfaltiplas-colunas-une-muxfaltiplas-colunas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars[}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,] }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(sex, gender, homeworld) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{unite}\NormalTok{(}\StringTok{"sexgender"}\NormalTok{, sex}\OperatorTok{:}\NormalTok{gender, }\DataTypeTok{sep =} \StringTok{"-"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 2
+##    sexgender       homeworld
+##    <chr>           <chr>    
+##  1 male-masculine  Tatooine 
+##  2 none-masculine  Tatooine 
+##  3 none-masculine  Naboo    
+##  4 male-masculine  Tatooine 
+##  5 female-feminine Alderaan 
+##  6 male-masculine  Tatooine 
+##  7 female-feminine Tatooine 
+##  8 none-masculine  Tatooine 
+##  9 male-masculine  Tatooine 
+## 10 male-masculine  Stewjon
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars[}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,] }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(sex, gender, homeworld) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{unite}\NormalTok{(}\StringTok{"sexgender"}\NormalTok{, sex}\OperatorTok{:}\NormalTok{gender, }\DataTypeTok{sep =} \StringTok{"-"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{separate}\NormalTok{(sexgender, }\KeywordTok{c}\NormalTok{(}\StringTok{"sex"}\NormalTok{, }\StringTok{"gender"}\NormalTok{), }\DataTypeTok{sep =} \StringTok{"-"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##    sex    gender    homeworld
+##    <chr>  <chr>     <chr>    
+##  1 male   masculine Tatooine 
+##  2 none   masculine Tatooine 
+##  3 none   masculine Naboo    
+##  4 male   masculine Tatooine 
+##  5 female feminine  Alderaan 
+##  6 male   masculine Tatooine 
+##  7 female feminine  Tatooine 
+##  8 none   masculine Tatooine 
+##  9 male   masculine Tatooine 
+## 10 male   masculine Stewjon
+\end{verbatim}
+
+\hypertarget{fill---preenche-as-cuxe9lulas-com-na-com-o-valor-posterior-ou-anterior-da-mesma-coluna}{%
+\section{fill() - Preenche as células com NA com o valor posterior ou anterior da mesma coluna}\label{fill---preenche-as-cuxe9lulas-com-na-com-o-valor-posterior-ou-anterior-da-mesma-coluna}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{starwars }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(hair_color) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{fill}\NormalTok{(hair_color)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 87 x 1
+##    hair_color   
+##    <chr>        
+##  1 blond        
+##  2 blond        
+##  3 blond        
+##  4 none         
+##  5 brown        
+##  6 brown, grey  
+##  7 brown        
+##  8 brown        
+##  9 black        
+## 10 auburn, white
+## # ... with 77 more rows
+\end{verbatim}
+
+\hypertarget{integrando-os-pacotes-tibble-dplyr-tidyr-e-magrittr}{%
+\chapter{\texorpdfstring{Integrando os pacotes \emph{tibble}, \emph{dplyr}, \emph{tidyr} e \emph{magrittr}}{Integrando os pacotes tibble, dplyr, tidyr e magrittr}}\label{integrando-os-pacotes-tibble-dplyr-tidyr-e-magrittr}}
+
+Importar o arquivo excel de nome ``dados'' presente na página para resolução desta tarefa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readxl)}
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"dados.xlsx"}\NormalTok{)}
+
+\NormalTok{dados }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{distinct}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(ano }\OperatorTok{==}\StringTok{ "2020"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{pivot_wider}\NormalTok{(}\DataTypeTok{id_cols =} \KeywordTok{c}\NormalTok{(ano, mes), }
+              \DataTypeTok{names_from =}\NormalTok{ especie, }
+              \DataTypeTok{values_from =}\NormalTok{ abundancia)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 12 x 5
+##      ano mes         sp1   sp2   sp3
+##    <dbl> <chr>     <dbl> <dbl> <dbl>
+##  1  2020 janeiro     132   105    80
+##  2  2020 fevereiro    56     3     2
+##  3  2020 março        41     4     8
+##  4  2020 abril         5    85   166
+##  5  2020 maio         72   152    35
+##  6  2020 junho        15    38   148
+##  7  2020 julho        57   184   141
+##  8  2020 agosto       74    NA    55
+##  9  2020 setembro     20    55   131
+## 10  2020 outubro     184    66    49
+## 11  2020 novembro    145   135    72
+## 12  2020 dezembro     NA   151   177
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(mes, temperatura) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(mes) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{temp_media =} \KeywordTok{mean}\NormalTok{(temperatura, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{factor}\NormalTok{(mes, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"janeiro"}\NormalTok{, }\StringTok{"fevereiro"}\NormalTok{, }\StringTok{"março"}\NormalTok{, }\StringTok{"abril"}\NormalTok{, }\StringTok{"maio"}\NormalTok{, }\StringTok{"junho"}\NormalTok{, }\StringTok{"julho"}\NormalTok{, }\StringTok{"agosto"}\NormalTok{, }\StringTok{"setembro"}\NormalTok{, }\StringTok{"outubro"}\NormalTok{, }\StringTok{"novembro"}\NormalTok{, }\StringTok{"dezembro"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 12 x 2
+##    mes       temp_media
+##    <chr>          <dbl>
+##  1 janeiro         19.5
+##  2 fevereiro       24.1
+##  3 março           21.9
+##  4 abril           19.2
+##  5 maio            22.1
+##  6 junho           22.4
+##  7 julho           25.0
+##  8 agosto          20.1
+##  9 setembro        25.0
+## 10 outubro         21.2
+## 11 novembro        23.2
+## 12 dezembro        22.8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(mes, temperatura) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(mes) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{temp_media =} \KeywordTok{mean}\NormalTok{(temperatura, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+            \DataTypeTok{temp_sd =} \KeywordTok{sd}\NormalTok{(temperatura, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{factor}\NormalTok{(mes, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"janeiro"}\NormalTok{, }\StringTok{"fevereiro"}\NormalTok{, }\StringTok{"março"}\NormalTok{, }\StringTok{"abril"}\NormalTok{, }\StringTok{"maio"}\NormalTok{, }\StringTok{"junho"}\NormalTok{, }\StringTok{"julho"}\NormalTok{, }\StringTok{"agosto"}\NormalTok{, }\StringTok{"setembro"}\NormalTok{, }\StringTok{"outubro"}\NormalTok{, }\StringTok{"novembro"}\NormalTok{, }\StringTok{"dezembro"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 12 x 3
+##    mes       temp_media temp_sd
+##    <chr>          <dbl>   <dbl>
+##  1 janeiro         19.5   0.249
+##  2 fevereiro       24.1   1.11 
+##  3 março           21.9   3.87 
+##  4 abril           19.2   0    
+##  5 maio            22.1   4.16 
+##  6 junho           22.4   4.19 
+##  7 julho           25.0   1.16 
+##  8 agosto          20.1   2.01 
+##  9 setembro        25.0   1.30 
+## 10 outubro         21.2   0.954
+## 11 novembro        23.2   0.738
+## 12 dezembro        22.8   4.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(mes, temperatura, salinidade) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(mes) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{temp_media =} \KeywordTok{mean}\NormalTok{(temperatura, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+            \DataTypeTok{temp_sd =} \KeywordTok{sd}\NormalTok{(temperatura, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+            \DataTypeTok{sal_media =} \KeywordTok{mean}\NormalTok{(salinidade, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{), }
+            \DataTypeTok{sal_sd =} \KeywordTok{sd}\NormalTok{(salinidade, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{factor}\NormalTok{(mes, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"janeiro"}\NormalTok{, }\StringTok{"fevereiro"}\NormalTok{, }\StringTok{"março"}\NormalTok{, }\StringTok{"abril"}\NormalTok{, }\StringTok{"maio"}\NormalTok{, }\StringTok{"junho"}\NormalTok{, }\StringTok{"julho"}\NormalTok{, }\StringTok{"agosto"}\NormalTok{, }\StringTok{"setembro"}\NormalTok{, }\StringTok{"outubro"}\NormalTok{, }\StringTok{"novembro"}\NormalTok{, }\StringTok{"dezembro"}\NormalTok{))) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{temp_sal =}\NormalTok{ temp_media}\OperatorTok{/}\NormalTok{sal_media)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 12 x 6
+##    mes       temp_media temp_sd sal_media  sal_sd temp_sal
+##    <chr>          <dbl>   <dbl>     <dbl>   <dbl>    <dbl>
+##  1 janeiro         19.5   0.249      24.5 5.30       0.797
+##  2 fevereiro       24.1   1.11       26.6 0.473      0.908
+##  3 março           21.9   3.87       29.9 2.47       0.732
+##  4 abril           19.2   0          17.3 0.00594    1.11 
+##  5 maio            22.1   4.16       25.7 7.95       0.861
+##  6 junho           22.4   4.19       20.8 3.91       1.08 
+##  7 julho           25.0   1.16       28.8 2.19       0.867
+##  8 agosto          20.1   2.01       24.0 1.82       0.840
+##  9 setembro        25.0   1.30       30.8 0.611      0.810
+## 10 outubro         21.2   0.954      22.2 6.51       0.956
+## 11 novembro        23.2   0.738      26.1 9.69       0.890
+## 12 dezembro        22.8   4.00       18.1 0.00526    1.26
+\end{verbatim}
+
+\hypertarget{exercuxedcio}{%
+\chapter{Exercício}\label{exercuxedcio}}
+
+Importar o arquivo excel de nome ``tarefa'' presente na página para resolução destes exercícios.
+
+1 - Faça a conversão da planilha para as tabelas a seguir utilizando as funções acima. Tente executar com apenas um comando e o mínimo de funções possíveis. \textbf{Utilize o operador pipe: \%\textgreater{}\%"}. \textbf{Se houver observações iguais remova-as}
+
+2 - Converta as seguintes tabelas (salinidade, temperatura, pH e mortalidade) para a seguinte planilha. Tente executar com mínimo de funções possíveis. \textbf{Dica: converta cada tabela em uma planilha e as una como colunas}. \textbf{``Utilize o operador pipe: \%\textgreater{}\%''}. \textbf{Se houver observações iguais remova-as}
+
+\hypertarget{resposta-exercuxedcio}{%
+\chapter{Resposta exercício}\label{resposta-exercuxedcio}}
+
+Será postada assim que todos que participaram da aula enviarem as suas respostas. ;)
+
+\end{document}

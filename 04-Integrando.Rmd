@@ -4,6 +4,9 @@
 Importar o arquivo excel de nome "dados" presente na página para resolução desta tarefa.
 
 ```{r}
+library(readxl)
+dados <- read_excel("dados.xlsx")
+
 dados %>% 
   select(1:4) %>% 
   distinct() %>% 
