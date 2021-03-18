@@ -1,7 +1,7 @@
 # Exercício
 
 
-Importar o arquivo excel de nome "tarefa" presente na página para resolução destes exercícios.
+Importar o arquivo excel de nome "tarefa" (https://github.com/wilson0106/tidyverse/blob/master/tarefa.xlsx).
 
 
 1 - Faça a conversão da planilha para as tabelas a seguir utilizando as funções acima. Tente executar com apenas um comando e o mínimo de funções possíveis. **Utilize o operador pipe: %>%"**. **Se houver observações iguais remova-as**
