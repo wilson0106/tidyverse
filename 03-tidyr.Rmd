@@ -27,8 +27,7 @@ starwars[1:10,] %>%
 
 starwars[1:10,] %>%
   select(homeworld, skin_color, mass) %>% 
-  pivot_wider(names_from = homeworld, values_from = mass, values_fn = list) %>% 
-  view()
+  pivot_wider(names_from = homeworld, values_from = mass, values_fn = list)
 
 starwars[1:10,] %>%
   select(homeworld, skin_color, mass) %>% 

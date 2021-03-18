@@ -264,13 +264,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 white, red  &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;NULL&gt;    &lt;NULL&gt;</code></pre>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">starwars[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb126-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(homeworld, skin_color, mass) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb126-3" data-line-number="3"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> homeworld, <span class="dt">values_from =</span> mass, <span class="dt">values_fn =</span> list) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb126-4" data-line-number="4"><span class="st">  </span><span class="kw">view</span>()</a>
-<a class="sourceLine" id="cb126-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb126-6" data-line-number="6">starwars[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb126-7" data-line-number="7"><span class="st">  </span><span class="kw">select</span>(homeworld, skin_color, mass) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb126-8" data-line-number="8"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> homeworld, <span class="dt">values_from =</span> mass) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb126-9" data-line-number="9"><span class="st">  </span><span class="kw">unchop</span>(<span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb126-3" data-line-number="3"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> homeworld, <span class="dt">values_from =</span> mass, <span class="dt">values_fn =</span> list)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   skin_color  Tatooine  Naboo     Alderaan  Stewjon  
+##   &lt;chr&gt;       &lt;list&gt;    &lt;list&gt;    &lt;list&gt;    &lt;list&gt;   
+## 1 fair        &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;NULL&gt;    &lt;dbl [1]&gt;
+## 2 gold        &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;NULL&gt;    &lt;NULL&gt;   
+## 3 white, blue &lt;NULL&gt;    &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;NULL&gt;   
+## 4 white       &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;NULL&gt;    &lt;NULL&gt;   
+## 5 light       &lt;dbl [3]&gt; &lt;NULL&gt;    &lt;dbl [1]&gt; &lt;NULL&gt;   
+## 6 white, red  &lt;dbl [1]&gt; &lt;NULL&gt;    &lt;NULL&gt;    &lt;NULL&gt;</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">starwars[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb128-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(homeworld, skin_color, mass) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb128-3" data-line-number="3"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> homeworld, <span class="dt">values_from =</span> mass) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb128-4" data-line-number="4"><span class="st">  </span><span class="kw">unchop</span>(<span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 8 x 5
 ##   skin_color  Tatooine Naboo Alderaan Stewjon
 ##   &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
@@ -282,10 +289,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 light             75    NA       49      NA
 ## 7 light             84    NA       49      NA
 ## 8 white, red        32    NA       NA      NA</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">starwars[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb128-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(skin_color, homeworld, mass) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb128-3" data-line-number="3"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> homeworld, <span class="dt">values_from =</span> mass) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb128-4" data-line-number="4"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">names_to =</span> <span class="st">&quot;homerworld&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;mass&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">starwars[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb130-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(skin_color, homeworld, mass) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb130-3" data-line-number="3"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> homeworld, <span class="dt">values_from =</span> mass) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb130-4" data-line-number="4"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">names_to =</span> <span class="st">&quot;homerworld&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;mass&quot;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 24 x 3
 ##    skin_color  homerworld mass     
 ##    &lt;chr&gt;       &lt;chr&gt;      &lt;list&gt;   
@@ -300,12 +307,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 white, blue Tatooine   &lt;NULL&gt;   
 ## 10 white, blue Naboo      &lt;dbl [1]&gt;
 ## # … with 14 more rows</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">starwars[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb130-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(homeworld, skin_color, mass) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb130-3" data-line-number="3"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> homeworld, <span class="dt">values_from =</span> mass) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb130-4" data-line-number="4"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">names_to =</span> <span class="st">&quot;homeworld&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;mass&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb130-5" data-line-number="5"><span class="st">  </span><span class="kw">unchop</span>(<span class="kw">everything</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb130-6" data-line-number="6"><span class="st">  </span><span class="kw">drop_na</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">starwars[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb132-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(homeworld, skin_color, mass) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb132-3" data-line-number="3"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> homeworld, <span class="dt">values_from =</span> mass) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb132-4" data-line-number="4"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">names_to =</span> <span class="st">&quot;homeworld&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;mass&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb132-5" data-line-number="5"><span class="st">  </span><span class="kw">unchop</span>(<span class="kw">everything</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb132-6" data-line-number="6"><span class="st">  </span><span class="kw">drop_na</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 3
 ##    skin_color  homeworld  mass
 ##    &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;
@@ -322,9 +329,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="separate-e-unite---separa-uma-coluna-em-múltiplas-colunas-une-múltiplas-colunas" class="section level2">
 <h2><span class="header-section-number">4.4</span> separate() e unite() - Separa uma coluna em múltiplas colunas; Une múltiplas colunas</h2>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">starwars[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb132-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(sex, gender, homeworld) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb132-3" data-line-number="3"><span class="st">  </span><span class="kw">unite</span>(<span class="st">&quot;sexgender&quot;</span>, sex<span class="op">:</span>gender, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1">starwars[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb134-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(sex, gender, homeworld) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb134-3" data-line-number="3"><span class="st">  </span><span class="kw">unite</span>(<span class="st">&quot;sexgender&quot;</span>, sex<span class="op">:</span>gender, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 2
 ##    sexgender       homeworld
 ##    &lt;chr&gt;           &lt;chr&gt;    
@@ -338,10 +345,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  8 none-masculine  Tatooine 
 ##  9 male-masculine  Tatooine 
 ## 10 male-masculine  Stewjon</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1">starwars[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb134-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(sex, gender, homeworld) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb134-3" data-line-number="3"><span class="st">  </span><span class="kw">unite</span>(<span class="st">&quot;sexgender&quot;</span>, sex<span class="op">:</span>gender, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb134-4" data-line-number="4"><span class="st">  </span><span class="kw">separate</span>(sexgender, <span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;gender&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1">starwars[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb136-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(sex, gender, homeworld) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb136-3" data-line-number="3"><span class="st">  </span><span class="kw">unite</span>(<span class="st">&quot;sexgender&quot;</span>, sex<span class="op">:</span>gender, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb136-4" data-line-number="4"><span class="st">  </span><span class="kw">separate</span>(sexgender, <span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;gender&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 3
 ##    sex    gender    homeworld
 ##    &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;    
@@ -358,9 +365,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="fill---preenche-as-células-com-na-com-o-valor-posterior-ou-anterior-da-mesma-coluna" class="section level2">
 <h2><span class="header-section-number">4.5</span> fill() - Preenche as células com NA com o valor posterior ou anterior da mesma coluna</h2>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1">starwars <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb136-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(hair_color) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb136-3" data-line-number="3"><span class="st">  </span><span class="kw">fill</span>(hair_color)</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">starwars <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(hair_color) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb138-3" data-line-number="3"><span class="st">  </span><span class="kw">fill</span>(hair_color)</a></code></pre></div>
 <pre><code>## # A tibble: 87 x 1
 ##    hair_color   
 ##    &lt;chr&gt;        
