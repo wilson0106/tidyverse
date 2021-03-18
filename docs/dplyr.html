@@ -131,7 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução - Pacotes</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
 <li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#do-pacote-tibble-iremos-trabalhar-as-seguintes-funções"><i class="fa fa-check"></i><b>1.0.1</b> Do pacote <em>tibble</em> iremos trabalhar as seguintes funções:</a></li>
 <li class="chapter" data-level="1.0.2" data-path="index.html"><a href="index.html#do-pacote-dplyr-iremos-trabalhas-as-seguintes-funções"><i class="fa fa-check"></i><b>1.0.2</b> Do pacote <em>dplyr</em> iremos trabalhas as seguintes funções:</a></li>
 <li class="chapter" data-level="1.0.3" data-path="index.html"><a href="index.html#do-pacote-tidyr-iremos-trabalhar-as-seguintes-funções"><i class="fa fa-check"></i><b>1.0.3</b> Do pacote <em>tidyr</em> iremos trabalhar as seguintes funções:</a></li>
@@ -197,16 +197,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Capítulo 3</span> <em>dplyr</em></h1>
 <div id="count-e-add_count---conta-o-número-de-linhas-em-função-da-variável-especificada-adiciona-uma-nova-coluna-com-a-contagem-do-número-de-linhas-em-função-da-variável-especificada" class="section level2">
 <h2><span class="header-section-number">3.1</span> count() e add_count() - conta o número de linhas em função da variável especificada; adiciona uma nova coluna com a contagem do número de linhas em função da variável especificada</h2>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(Species)</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(Species)</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   Species        n
 ##   &lt;fct&gt;      &lt;int&gt;
 ## 1 setosa        50
 ## 2 versicolor    50
 ## 3 virginica     50</code></pre>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="st">  </span><span class="kw">add_count</span>(Species)</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="st">  </span><span class="kw">add_count</span>(Species)</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 6
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species     n
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;   &lt;int&gt;
@@ -224,8 +224,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="arrange---rearranja-as-linhas-em-função-da-variável-especificada" class="section level2">
 <h2><span class="header-section-number">3.2</span> arrange() - rearranja as linhas em função da variável especificada</h2>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb57-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(Species)</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(Species)</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -240,8 +240,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          4.4         2.9          1.4         0.2 setosa 
 ## 10          4.9         3.1          1.5         0.1 setosa 
 ## # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(Species))</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(Species))</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;    
@@ -256,8 +256,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          6.7         2.5          5.8         1.8 virginica
 ## 10          7.2         3.6          6.1         2.5 virginica
 ## # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">factor</span>(Species, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;versicolor&quot;</span>, <span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;virginica&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">factor</span>(Species, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;versicolor&quot;</span>, <span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;virginica&quot;</span>)))</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;     
@@ -275,10 +275,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="bind_cols---une-planilhas-em-colunas" class="section level2">
 <h2><span class="header-section-number">3.3</span> bind_cols() - une planilhas em colunas</h2>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">parte1 &lt;-<span class="st"> </span>flores[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb63-2" data-line-number="2">parte2 &lt;-<span class="st"> </span>flores[,<span class="dv">3</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb63-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb63-4" data-line-number="4"><span class="kw">bind_cols</span>(parte1, parte2)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">parte1 &lt;-<span class="st"> </span>flores[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2">parte2 &lt;-<span class="st"> </span>flores[,<span class="dv">3</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb54-4" data-line-number="4"><span class="kw">bind_cols</span>(parte1, parte2)</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -296,10 +296,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="bind_rows---une-planilhas-em-linhas" class="section level2">
 <h2><span class="header-section-number">3.4</span> bind_rows() - une planilhas em linhas</h2>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">parte1 &lt;-<span class="st"> </span>flores[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,]</a>
-<a class="sourceLine" id="cb65-2" data-line-number="2">parte2 &lt;-<span class="st"> </span>flores[<span class="dv">11</span><span class="op">:</span><span class="dv">150</span>,]</a>
-<a class="sourceLine" id="cb65-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb65-4" data-line-number="4"><span class="kw">bind_rows</span>(parte1, parte2)</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">parte1 &lt;-<span class="st"> </span>flores[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,]</a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">parte2 &lt;-<span class="st"> </span>flores[<span class="dv">11</span><span class="op">:</span><span class="dv">150</span>,]</a>
+<a class="sourceLine" id="cb56-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb56-4" data-line-number="4"><span class="kw">bind_rows</span>(parte1, parte2)</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -317,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="distinct---remove-as-linhas-que-são-exatamente-iguais" class="section level2">
 <h2><span class="header-section-number">3.5</span> distinct() - remove as linhas que são exatamente iguais</h2>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">flores</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">flores</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -332,8 +332,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          4.4         2.9          1.4         0.2 setosa 
 ## 10          4.9         3.1          1.5         0.1 setosa 
 ## # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb69-2" data-line-number="2"><span class="st">  </span><span class="kw">distinct</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2"><span class="st">  </span><span class="kw">distinct</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 149 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -348,9 +348,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          4.4         2.9          1.4         0.2 setosa 
 ## 10          4.9         3.1          1.5         0.1 setosa 
 ## # … with 139 more rows</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb71-2" data-line-number="2"><span class="st">  </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb71-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(Species)</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="st">  </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb62-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(Species)</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   Species        n
 ##   &lt;fct&gt;      &lt;int&gt;
@@ -360,8 +360,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="filter---filtra-as-linhas-que-satisfação-alguma-condição" class="section level2">
 <h2><span class="header-section-number">3.6</span> filter() - filtra as linhas que satisfação alguma condição</h2>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 50 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -376,8 +376,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          4.4         2.9          1.4         0.2 setosa 
 ## 10          4.9         3.1          1.5         0.1 setosa 
 ## # … with 40 more rows</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb75-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;virginica&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;virginica&quot;</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 100 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -392,8 +392,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          4.4         2.9          1.4         0.2 setosa 
 ## 10          4.9         3.1          1.5         0.1 setosa 
 ## # … with 90 more rows</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb77-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Sepal.Length <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Sepal.Length))</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Sepal.Length <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Sepal.Length))</a></code></pre></div>
 <pre><code>## # A tibble: 70 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;     
@@ -408,9 +408,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          6.1         2.9          4.7         1.4 versicolor
 ## 10          6.7         3.1          4.4         1.4 versicolor
 ## # … with 60 more rows</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb79-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb79-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(Sepal.Length <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Sepal.Length))</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb70-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb70-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(Sepal.Length <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Sepal.Length))</a></code></pre></div>
 <pre><code>## # A tibble: 22 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -425,8 +425,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          5.1         3.8          1.5         0.3 setosa 
 ## 10          5.4         3.4          1.7         0.2 setosa 
 ## # … with 12 more rows</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb81-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Petal.Length <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Petal.Length) <span class="op">&amp;</span><span class="st"> </span>Petal.Width <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Petal.Width))</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Petal.Length <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Petal.Length) <span class="op">&amp;</span><span class="st"> </span>Petal.Width <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Petal.Width))</a></code></pre></div>
 <pre><code>## # A tibble: 89 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;     
@@ -441,9 +441,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          5.2         2.7          3.9         1.4 versicolor
 ## 10          5.9         3            4.2         1.5 versicolor
 ## # … with 79 more rows</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb83-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Petal.Length <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Petal.Length) <span class="op">&amp;</span><span class="st"> </span>Petal.Width <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Petal.Width)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb83-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(Species)</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Petal.Length <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Petal.Length) <span class="op">&amp;</span><span class="st"> </span>Petal.Width <span class="op">&gt;=</span><span class="st"> </span><span class="kw">mean</span>(Petal.Width)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb74-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(Species)</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   Species        n
 ##   &lt;fct&gt;      &lt;int&gt;
@@ -452,10 +452,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="group_by---agrupa-as-linhas-em-função-dos-valores-de-alguma-variável" class="section level2">
 <h2><span class="header-section-number">3.7</span> group_by() - agrupa as linhas em função dos valores de alguma variável</h2>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="co">#Ver esta função juntamente com mutate(), transmute() e summarise()</span></a>
-<a class="sourceLine" id="cb85-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb85-3" data-line-number="3">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb85-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(Species)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co">#Ver esta função juntamente com mutate(), transmute() e summarise()</span></a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb76-3" data-line-number="3">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(Species)</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ## # Groups:   Species [3]
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
@@ -474,8 +474,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="mutate-e-transmute---adiciona-novas-variáveis-e-preserva-as-existentes-adiciona-novas-variáveis-e-não-preserva-as-existentes" class="section level2">
 <h2><span class="header-section-number">3.8</span> mutate() e transmute() - adiciona novas variáveis e preserva as existentes; adiciona novas variáveis e não preserva as existentes</h2>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">teste =</span> Petal.Length <span class="op">+</span><span class="st"> </span>Sepal.Length)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">teste =</span> Petal.Length <span class="op">+</span><span class="st"> </span>Sepal.Length)</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 6
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species teste
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt;
@@ -490,9 +490,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          4.4         2.9          1.4         0.2 setosa    5.8
 ## 10          4.9         3.1          1.5         0.1 setosa    6.4
 ## # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb89-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">PL_media =</span> <span class="kw">mean</span>(Petal.Length))</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb80-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">PL_media =</span> <span class="kw">mean</span>(Petal.Length))</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 6
 ## # Groups:   Species [3]
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species PL_media
@@ -508,9 +508,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          4.4         2.9          1.4         0.2 setosa      1.46
 ## 10          4.9         3.1          1.5         0.1 setosa      1.46
 ## # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb91-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb91-3" data-line-number="3"><span class="st">  </span><span class="kw">transmute</span>(PL.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Petal.Length))</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb82-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb82-3" data-line-number="3"><span class="st">  </span><span class="kw">transmute</span>(PL.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Petal.Length))</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 2
 ## # Groups:   Species [3]
 ##    Species PL.média
@@ -526,10 +526,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 setosa      1.46
 ## 10 setosa      1.46
 ## # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb93-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb93-3" data-line-number="3"><span class="st">  </span><span class="kw">transmute</span>(PL.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Petal.Length), </a>
-<a class="sourceLine" id="cb93-4" data-line-number="4">            SL.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Sepal.Length))</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb84-3" data-line-number="3"><span class="st">  </span><span class="kw">transmute</span>(PL.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Petal.Length), </a>
+<a class="sourceLine" id="cb84-4" data-line-number="4">            SL.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Sepal.Length))</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 3
 ## # Groups:   Species [3]
 ##    Species PL.média SL.média
@@ -548,8 +548,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="na_if---substitui-o-valor-especificado-por-na" class="section level2">
 <h2><span class="header-section-number">3.9</span> na_if() - Substitui o valor especificado por NA</h2>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb95-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Species =</span> <span class="kw">na_if</span>(Species, <span class="st">&quot;setosa&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb86-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Species =</span> <span class="kw">na_if</span>(Species, <span class="st">&quot;setosa&quot;</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -564,8 +564,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          4.4         2.9          1.4         0.2 &lt;NA&gt;   
 ## 10          4.9         3.1          1.5         0.1 &lt;NA&gt;   
 ## # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb97-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Petal.Length =</span> <span class="kw">na_if</span>(Petal.Length, <span class="fl">1.4</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Petal.Length =</span> <span class="kw">na_if</span>(Petal.Length, <span class="fl">1.4</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -580,8 +580,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          4.4         2.9         NA           0.2 setosa 
 ## 10          4.9         3.1          1.5         0.1 setosa 
 ## # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Sepal.Length =</span> <span class="kw">na_if</span>(Sepal.Length, <span class="fl">5.1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb90-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Sepal.Length =</span> <span class="kw">na_if</span>(Sepal.Length, <span class="fl">5.1</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -599,8 +599,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="recode-e-recode_factor---substitui-um-determinado-valor-por-outro-se-variável-for-númerica-usar-recode-se-for-fator-usar-recode_factor" class="section level2">
 <h2><span class="header-section-number">3.10</span> recode() e recode_factor() - substitui um determinado valor por outro, se variável for númerica usar recode(), se for fator usar recode_factor()</h2>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb101-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Sepal.Length =</span> <span class="kw">recode</span>(Sepal.Length, <span class="st">`</span><span class="dt">5.1</span><span class="st">`</span> =<span class="st"> </span><span class="dv">0</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb92-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Sepal.Length =</span> <span class="kw">recode</span>(Sepal.Length, <span class="st">`</span><span class="dt">5.1</span><span class="st">`</span> =<span class="st"> </span><span class="dv">0</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -615,8 +615,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          4.4         2.9          1.4         0.2 setosa 
 ## 10          4.9         3.1          1.5         0.1 setosa 
 ## # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb103-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Species =</span> <span class="kw">recode_factor</span>(Species, <span class="dt">setosa =</span> <span class="st">&quot;sts&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb94-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Species =</span> <span class="kw">recode_factor</span>(Species, <span class="dt">setosa =</span> <span class="st">&quot;sts&quot;</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -634,8 +634,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="relocate---altera-a-ordem-das-variáveis" class="section level2">
 <h2><span class="header-section-number">3.11</span> relocate() - altera a ordem das variáveis</h2>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="st">  </span><span class="kw">relocate</span>(Species, <span class="dt">.before =</span> Sepal.Length)</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="st">  </span><span class="kw">relocate</span>(Species, <span class="dt">.before =</span> Sepal.Length)</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Species Sepal.Length Sepal.Width Petal.Length Petal.Width
 ##    &lt;fct&gt;          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
@@ -653,8 +653,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="rename---altera-o-nome-das-variáveis" class="section level2">
 <h2><span class="header-section-number">3.12</span> rename() - altera o nome das variáveis</h2>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb107-2" data-line-number="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">sp =</span> Species)</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb98-2" data-line-number="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">sp =</span> Species)</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width sp    
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt; 
@@ -672,8 +672,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="select---seleciona-variáveis" class="section level2">
 <h2><span class="header-section-number">3.13</span> select() - Seleciona variáveis</h2>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb109-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(Species)</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb100-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(Species)</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 1
 ##    Species
 ##    &lt;fct&gt;  
@@ -688,8 +688,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 setosa 
 ## 10 setosa 
 ## # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb111-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&quot;Sepal&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb102-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&quot;Sepal&quot;</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 2
 ##    Sepal.Length Sepal.Width
 ##           &lt;dbl&gt;       &lt;dbl&gt;
@@ -704,8 +704,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          4.4         2.9
 ## 10          4.9         3.1
 ## # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb113-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="kw">ends_with</span>(<span class="st">&quot;Length&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb104-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="kw">ends_with</span>(<span class="st">&quot;Length&quot;</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 2
 ##    Sepal.Length Petal.Length
 ##           &lt;dbl&gt;        &lt;dbl&gt;
@@ -720,8 +720,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          4.4          1.4
 ## 10          4.9          1.5
 ## # … with 140 more rows</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb115-2" data-line-number="2"><span class="st">    </span><span class="kw">select</span>(Species, Sepal.Length)</a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb106-2" data-line-number="2"><span class="st">    </span><span class="kw">select</span>(Species, Sepal.Length)</a></code></pre></div>
 <pre><code>## # A tibble: 150 x 2
 ##    Species Sepal.Length
 ##    &lt;fct&gt;          &lt;dbl&gt;
@@ -739,8 +739,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="slice---seleciona-linhas" class="section level2">
 <h2><span class="header-section-number">3.14</span> slice() - Seleciona linhas</h2>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb117-2" data-line-number="2"><span class="st">    </span><span class="kw">slice</span>(<span class="dv">3</span><span class="op">:</span><span class="dv">15</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb108-2" data-line-number="2"><span class="st">    </span><span class="kw">slice</span>(<span class="dv">3</span><span class="op">:</span><span class="dv">15</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 13 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -757,23 +757,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 11          4.8         3            1.4         0.1 setosa 
 ## 12          4.3         3            1.1         0.1 setosa 
 ## 13          5.8         4            1.2         0.2 setosa</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb119-2" data-line-number="2"><span class="st">    </span><span class="kw">slice_sample</span>(<span class="dt">n =</span> <span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb110-2" data-line-number="2"><span class="st">    </span><span class="kw">slice_sample</span>(<span class="dt">n =</span> <span class="dv">10</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;     
-##  1          6.4         2.7          5.3         1.9 virginica 
-##  2          6.1         3            4.9         1.8 virginica 
-##  3          5.8         2.7          5.1         1.9 virginica 
-##  4          6.2         2.2          4.5         1.5 versicolor
-##  5          6.7         3.1          4.7         1.5 versicolor
-##  6          6.1         3            4.6         1.4 versicolor
-##  7          6.3         3.4          5.6         2.4 virginica 
-##  8          5.1         3.3          1.7         0.5 setosa    
-##  9          5.4         3.7          1.5         0.2 setosa    
-## 10          7.4         2.8          6.1         1.9 virginica</code></pre>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb121-2" data-line-number="2"><span class="st">    </span><span class="kw">slice_min</span>(Petal.Length, <span class="dt">n =</span> <span class="dv">10</span>)</a></code></pre></div>
+##  1          6.7         3.3          5.7         2.5 virginica 
+##  2          6.8         2.8          4.8         1.4 versicolor
+##  3          6.5         3            5.2         2   virginica 
+##  4          6           2.9          4.5         1.5 versicolor
+##  5          7.6         3            6.6         2.1 virginica 
+##  6          6.1         2.8          4           1.3 versicolor
+##  7          4.7         3.2          1.6         0.2 setosa    
+##  8          5           3.6          1.4         0.2 setosa    
+##  9          4.4         3.2          1.3         0.2 setosa    
+## 10          4.5         2.3          1.3         0.3 setosa</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb112-2" data-line-number="2"><span class="st">    </span><span class="kw">slice_min</span>(Petal.Length, <span class="dt">n =</span> <span class="dv">10</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 11 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -788,8 +788,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9          5           3.5          1.3         0.3 setosa 
 ## 10          4.5         2.3          1.3         0.3 setosa 
 ## 11          4.4         3.2          1.3         0.2 setosa</code></pre>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="st">    </span><span class="kw">slice_max</span>(Petal.Length, <span class="dt">n =</span> <span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">flores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb114-2" data-line-number="2"><span class="st">    </span><span class="kw">slice_max</span>(Petal.Length, <span class="dt">n =</span> <span class="dv">10</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 11 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;    
@@ -807,13 +807,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="summarise---sumariza-os-dados" class="section level2">
 <h2><span class="header-section-number">3.15</span> summarise() - sumariza os dados</h2>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb125-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">N =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb125-4" data-line-number="4">            PL.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Petal.Length),</a>
-<a class="sourceLine" id="cb125-5" data-line-number="5">            SL.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Sepal.Length),</a>
-<a class="sourceLine" id="cb125-6" data-line-number="6">            PW.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Petal.Width),</a>
-<a class="sourceLine" id="cb125-7" data-line-number="7">            SW.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Sepal.Width))</a></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">flores <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb116-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb116-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">N =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb116-4" data-line-number="4">            PL.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Petal.Length),</a>
+<a class="sourceLine" id="cb116-5" data-line-number="5">            SL.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Sepal.Length),</a>
+<a class="sourceLine" id="cb116-6" data-line-number="6">            PW.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Petal.Width),</a>
+<a class="sourceLine" id="cb116-7" data-line-number="7">            SW.mé<span class="dt">dia =</span> <span class="kw">mean</span>(Sepal.Width))</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 6
 ##   Species        N PL.média SL.média PW.média SW.média
 ##   &lt;fct&gt;      &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;

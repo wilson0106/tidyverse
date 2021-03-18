@@ -20,7 +20,7 @@ starwars %>%
 
 
 ## pivot_longer() e pivot_wider() - Aumenta o número de linhas e diminui o número de colunas; aumenta o número de colunas e diminui o número de linhas
-```{r}
+```{r, warning = FALSE}
 starwars[1:10,] %>%
   select(homeworld, skin_color, mass) %>% 
   pivot_wider(names_from = homeworld, values_from = mass, values_fn = list)

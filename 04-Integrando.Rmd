@@ -3,10 +3,13 @@
 
 Importar o arquivo excel de nome "dados": (https://github.com/wilson0106/tidyverse/blob/master/dados.xlsx) 
 
-```{r}
+```{r, echo = FALSE, include = FALSE, message = FALSE}
 library(readxl)
 dados <- read_excel("dados.xlsx")
+```
 
+
+```{r, message = FALSE}
 dados %>% 
   select(1:4) %>% 
   distinct() %>% 

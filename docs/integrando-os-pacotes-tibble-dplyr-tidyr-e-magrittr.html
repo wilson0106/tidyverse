@@ -131,7 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução - Pacotes</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
 <li class="chapter" data-level="1.0.1" data-path="index.html"><a href="index.html#do-pacote-tibble-iremos-trabalhar-as-seguintes-funções"><i class="fa fa-check"></i><b>1.0.1</b> Do pacote <em>tibble</em> iremos trabalhar as seguintes funções:</a></li>
 <li class="chapter" data-level="1.0.2" data-path="index.html"><a href="index.html#do-pacote-dplyr-iremos-trabalhas-as-seguintes-funções"><i class="fa fa-check"></i><b>1.0.2</b> Do pacote <em>dplyr</em> iremos trabalhas as seguintes funções:</a></li>
 <li class="chapter" data-level="1.0.3" data-path="index.html"><a href="index.html#do-pacote-tidyr-iremos-trabalhar-as-seguintes-funções"><i class="fa fa-check"></i><b>1.0.3</b> Do pacote <em>tidyr</em> iremos trabalhar as seguintes funções:</a></li>
@@ -196,16 +196,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="integrando-os-pacotes-tibble-dplyr-tidyr-e-magrittr" class="section level1">
 <h1><span class="header-section-number">Capítulo 5</span> Integrando os pacotes <em>tibble</em>, <em>dplyr</em>, <em>tidyr</em> e <em>magrittr</em></h1>
 <p>Importar o arquivo excel de nome “dados”: (<a href="https://github.com/wilson0106/tidyverse/blob/master/dados.xlsx" class="uri">https://github.com/wilson0106/tidyverse/blob/master/dados.xlsx</a>)</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="kw">library</span>(readxl)</a>
-<a class="sourceLine" id="cb150-2" data-line-number="2">dados &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;dados.xlsx&quot;</span>)</a>
-<a class="sourceLine" id="cb150-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb150-4" data-line-number="4">dados <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb150-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb150-6" data-line-number="6"><span class="st">  </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb150-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(ano <span class="op">==</span><span class="st"> &quot;2020&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb150-8" data-line-number="8"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">id_cols =</span> <span class="kw">c</span>(ano, mes), </a>
-<a class="sourceLine" id="cb150-9" data-line-number="9">              <span class="dt">names_from =</span> especie, </a>
-<a class="sourceLine" id="cb150-10" data-line-number="10">              <span class="dt">values_from =</span> abundancia)</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">dados <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb138-3" data-line-number="3"><span class="st">  </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb138-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(ano <span class="op">==</span><span class="st"> &quot;2020&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb138-5" data-line-number="5"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">id_cols =</span> <span class="kw">c</span>(ano, mes), </a>
+<a class="sourceLine" id="cb138-6" data-line-number="6">              <span class="dt">names_from =</span> especie, </a>
+<a class="sourceLine" id="cb138-7" data-line-number="7">              <span class="dt">values_from =</span> abundancia)</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 5
 ##      ano mes         sp1   sp2   sp3
 ##    &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -221,11 +218,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10  2020 outubro     184    66    49
 ## 11  2020 novembro    145   135    72
 ## 12  2020 dezembro     NA   151   177</code></pre>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1">dados <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb152-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(mes, temperatura) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb152-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(mes) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb152-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">temp_media =</span> <span class="kw">mean</span>(temperatura, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb152-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">factor</span>(mes, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;janeiro&quot;</span>, <span class="st">&quot;fevereiro&quot;</span>, <span class="st">&quot;março&quot;</span>, <span class="st">&quot;abril&quot;</span>, <span class="st">&quot;maio&quot;</span>, <span class="st">&quot;junho&quot;</span>, <span class="st">&quot;julho&quot;</span>, <span class="st">&quot;agosto&quot;</span>, <span class="st">&quot;setembro&quot;</span>, <span class="st">&quot;outubro&quot;</span>, <span class="st">&quot;novembro&quot;</span>, <span class="st">&quot;dezembro&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1">dados <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(mes, temperatura) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb140-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(mes) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb140-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">temp_media =</span> <span class="kw">mean</span>(temperatura, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb140-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">factor</span>(mes, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;janeiro&quot;</span>, <span class="st">&quot;fevereiro&quot;</span>, <span class="st">&quot;março&quot;</span>, <span class="st">&quot;abril&quot;</span>, <span class="st">&quot;maio&quot;</span>, <span class="st">&quot;junho&quot;</span>, <span class="st">&quot;julho&quot;</span>, <span class="st">&quot;agosto&quot;</span>, <span class="st">&quot;setembro&quot;</span>, <span class="st">&quot;outubro&quot;</span>, <span class="st">&quot;novembro&quot;</span>, <span class="st">&quot;dezembro&quot;</span>)))</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 2
 ##    mes       temp_media
 ##    &lt;chr&gt;          &lt;dbl&gt;
@@ -241,12 +238,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 outubro         21.2
 ## 11 novembro        23.2
 ## 12 dezembro        22.8</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">dados <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb154-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(mes, temperatura) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb154-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(mes) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb154-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">temp_media =</span> <span class="kw">mean</span>(temperatura, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb154-5" data-line-number="5">            <span class="dt">temp_sd =</span> <span class="kw">sd</span>(temperatura, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb154-6" data-line-number="6"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">factor</span>(mes, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;janeiro&quot;</span>, <span class="st">&quot;fevereiro&quot;</span>, <span class="st">&quot;março&quot;</span>, <span class="st">&quot;abril&quot;</span>, <span class="st">&quot;maio&quot;</span>, <span class="st">&quot;junho&quot;</span>, <span class="st">&quot;julho&quot;</span>, <span class="st">&quot;agosto&quot;</span>, <span class="st">&quot;setembro&quot;</span>, <span class="st">&quot;outubro&quot;</span>, <span class="st">&quot;novembro&quot;</span>, <span class="st">&quot;dezembro&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1">dados <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb142-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(mes, temperatura) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb142-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(mes) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb142-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">temp_media =</span> <span class="kw">mean</span>(temperatura, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb142-5" data-line-number="5">            <span class="dt">temp_sd =</span> <span class="kw">sd</span>(temperatura, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb142-6" data-line-number="6"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">factor</span>(mes, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;janeiro&quot;</span>, <span class="st">&quot;fevereiro&quot;</span>, <span class="st">&quot;março&quot;</span>, <span class="st">&quot;abril&quot;</span>, <span class="st">&quot;maio&quot;</span>, <span class="st">&quot;junho&quot;</span>, <span class="st">&quot;julho&quot;</span>, <span class="st">&quot;agosto&quot;</span>, <span class="st">&quot;setembro&quot;</span>, <span class="st">&quot;outubro&quot;</span>, <span class="st">&quot;novembro&quot;</span>, <span class="st">&quot;dezembro&quot;</span>)))</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 3
 ##    mes       temp_media temp_sd
 ##    &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;
@@ -262,15 +259,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 outubro         21.2   0.954
 ## 11 novembro        23.2   0.738
 ## 12 dezembro        22.8   4.00</code></pre>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1">dados <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb156-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(mes, temperatura, salinidade) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb156-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(mes) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb156-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">temp_media =</span> <span class="kw">mean</span>(temperatura, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb156-5" data-line-number="5">            <span class="dt">temp_sd =</span> <span class="kw">sd</span>(temperatura, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb156-6" data-line-number="6">            <span class="dt">sal_media =</span> <span class="kw">mean</span>(salinidade, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb156-7" data-line-number="7">            <span class="dt">sal_sd =</span> <span class="kw">sd</span>(salinidade, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb156-8" data-line-number="8"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">factor</span>(mes, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;janeiro&quot;</span>, <span class="st">&quot;fevereiro&quot;</span>, <span class="st">&quot;março&quot;</span>, <span class="st">&quot;abril&quot;</span>, <span class="st">&quot;maio&quot;</span>, <span class="st">&quot;junho&quot;</span>, <span class="st">&quot;julho&quot;</span>, <span class="st">&quot;agosto&quot;</span>, <span class="st">&quot;setembro&quot;</span>, <span class="st">&quot;outubro&quot;</span>, <span class="st">&quot;novembro&quot;</span>, <span class="st">&quot;dezembro&quot;</span>))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb156-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">temp_sal =</span> temp_media<span class="op">/</span>sal_media)</a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1">dados <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb144-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(mes, temperatura, salinidade) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb144-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(mes) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb144-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">temp_media =</span> <span class="kw">mean</span>(temperatura, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb144-5" data-line-number="5">            <span class="dt">temp_sd =</span> <span class="kw">sd</span>(temperatura, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb144-6" data-line-number="6">            <span class="dt">sal_media =</span> <span class="kw">mean</span>(salinidade, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb144-7" data-line-number="7">            <span class="dt">sal_sd =</span> <span class="kw">sd</span>(salinidade, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb144-8" data-line-number="8"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">factor</span>(mes, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;janeiro&quot;</span>, <span class="st">&quot;fevereiro&quot;</span>, <span class="st">&quot;março&quot;</span>, <span class="st">&quot;abril&quot;</span>, <span class="st">&quot;maio&quot;</span>, <span class="st">&quot;junho&quot;</span>, <span class="st">&quot;julho&quot;</span>, <span class="st">&quot;agosto&quot;</span>, <span class="st">&quot;setembro&quot;</span>, <span class="st">&quot;outubro&quot;</span>, <span class="st">&quot;novembro&quot;</span>, <span class="st">&quot;dezembro&quot;</span>))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb144-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">temp_sal =</span> temp_media<span class="op">/</span>sal_media)</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 6
 ##    mes       temp_media temp_sd sal_media  sal_sd temp_sal
 ##    &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;

@@ -2,7 +2,7 @@
 
 
 ## as_tibble() - converte um objeto do tipo matriz ou data frame para tbl_df
-```{r}
+```{r, message = FALSE}
 obj1 <- carros
 obj2 <- carros %>%
   data.frame()
@@ -55,6 +55,8 @@ carros %>%
 
 ## subsetting - forma de escrita que permite cortar/selecionar a planilha em função das linhas e colunas
 ```{r}
+# ["linhas", "colunas"]
+
 carros[1, ]
 carros[2, ]
 carros[1:2, ]
@@ -62,7 +64,6 @@ carros[1:2, ]
 carros[, 1]
 carros[, "mpg"]
 carros[[1]]
-carros[["mpg"]]
 carros[["mpg"]]
 carros$mpg
 

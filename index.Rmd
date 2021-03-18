@@ -7,11 +7,11 @@ documentclass: book
 biblio-style: apalike
 link-citations: yes
 ---
-# Introdução - Pacotes
+# Introdução
 
 
 Para começar precisamos instalar os seguintes pacotes:
-```{r echo = FALSE, eval = FALSE}
+```{r, eval = FALSE, message = FALSE}
 install.packages("tibble")
 install.packages("dplyr")
 install.packages("tidyr")
@@ -20,13 +20,13 @@ install.packages("magrittr")
 
 
 Ou então, um único pacote **tidyverse**. Que engloba todos os pacotes acima.
-```{r echo = FALSE, eval = FALSE}
+```{r, eval = FALSE, message = FALSE}
 install.packages("tidyverse")
 ```
 
 
 Após instalados precisamos carrega-los. Podemos fazer isso chamando cada um dos pacotes separadamente.
-```{r}
+```{r, message = FALSE}
 library(tibble)
 library(dplyr)
 library(tidyr)
@@ -36,7 +36,7 @@ OBS: O pacote *magrittr* não faz parte do pacote tidyverse, mas é carregado po
 
 
 Ou então podemos chamar apenas o pacote *tidyverse*.
-```{r}
+```{r, message = FALSE}
 library(tidyverse)
 ```
 
@@ -98,7 +98,7 @@ Caso não souberem importar os dados de um arquivo \*.csv ou \*.excel presente n
 Vamos trabalhar com conjuntos de dados presentes no R.
 
 
-```{r}
+```{r, message = FALSE}
 data(mtcars)
 carros <- as_tibble(mtcars, rownames = NA)
 

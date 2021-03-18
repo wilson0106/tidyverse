@@ -6,18 +6,22 @@ Importar o arquivo excel de nome "tarefa" (https://github.com/wilson0106/tidyver
 
 1 - A partir da seguinte planilha:
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, include = FALSE, message = FALSE}
 library(readxl)
 library(kableExtra)
 tarefa <- read_excel("tarefa.xlsx", sheet = "planilha")
+```
 
+
+```{r, echo = FALSE, message = FALSE}
 tarefa %>% 
   kable()
 ```
 
-Produza as tabelas a seguir utilizando as funções acima. Tente executar com apenas um comando e o mínimo de funções possíveis. **Utilize o operador pipe: %>%"**. **Se houver observações iguais remova-as**
 
-```{r, echo = FALSE}
+Produza as tabelas a seguir. Tente executar com apenas um comando e o mínimo de funções possíveis. **Utilize o operador pipe: %>%"**. **Se houver observações iguais remova-as**
+
+```{r, echo = FALSE, message = FALSE}
 tarefa %>% 
   select(1:4) %>% 
   distinct() %>% 
@@ -28,8 +32,10 @@ tarefa %>%
               values_from = mortalidade) %>% 
   arrange(factor(experimento, levels = c("baixa", "media", "alta"))) %>% 
   kable()
+```
 
 
+```{r, echo = FALSE, message = FALSE}
 tarefa %>% 
   select(1:4) %>% 
   distinct() %>% 
@@ -46,32 +52,32 @@ tarefa %>%
 
 2 - A partir das seguintes tabelas: 
 
-Salinidade
-```{r, echo = FALSE}
+**Salinidade**
+```{r, echo = FALSE, message = FALSE}
 salinidade <- read_excel("tarefa.xlsx", sheet = "salinidade")
 
 salinidade %>% 
   kable()
 ```
 
-Temperatura
-```{r, echo = FALSE}
+**Temperatura**
+```{r, echo = FALSE, message = FALSE}
 temperatura <- read_excel("tarefa.xlsx", sheet = "temperatura")
 
 temperatura %>% 
   kable()
 ```
 
-pH
-```{r, echo = FALSE}
+**pH**
+```{r, echo = FALSE, message = FALSE}
 pH <- read_excel("tarefa.xlsx", sheet = "pH")
 
 pH %>% 
   kable()
 ```
 
-Mortalidade
-```{r, echo = FALSE}
+**Mortalidade**
+```{r, echo = FALSE, message = FALSE}
 mortalidade <- read_excel("tarefa.xlsx", sheet = "mortalidade")
 
 mortalidade %>% 
@@ -81,7 +87,7 @@ mortalidade %>%
 
 Produza a seguinte planilha. Tente executar com mínimo de funções possíveis. **Dica: converta cada tabela em uma planilha e as una como colunas**. **"Utilize o operador pipe: %>%"**. **Se houver observações iguais remova-as**
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, message = FALSE}
 salinidade <- salinidade %>% 
   pivot_longer(cols = 2:6, names_to = "hora", values_to = "salinidade")
 

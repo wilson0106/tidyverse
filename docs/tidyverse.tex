@@ -134,12 +134,27 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{introduuxe7uxe3o---pacotes}{%
-\chapter{Introdução - Pacotes}\label{introduuxe7uxe3o---pacotes}}
+\hypertarget{introduuxe7uxe3o}{%
+\chapter{Introdução}\label{introduuxe7uxe3o}}
 
 Para começar precisamos instalar os seguintes pacotes:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"tibble"}\NormalTok{)}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{)}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"tidyr"}\NormalTok{)}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"magrittr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 Ou então, um único pacote \textbf{tidyverse}. Que engloba todos os pacotes acima.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 Após instalados precisamos carrega-los. Podemos fazer isso chamando cada um dos pacotes separadamente.
 
@@ -147,43 +162,10 @@ Após instalados precisamos carrega-los. Podemos fazer isso chamando cada um dos
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(tibble)}
 \KeywordTok{library}\NormalTok{(dplyr)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-## Attaching package: 'dplyr'
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(tidyr)}
 \KeywordTok{library}\NormalTok{(magrittr)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## 
-## Attaching package: 'magrittr'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:tidyr':
-## 
-##     extract
-\end{verbatim}
 
 OBS: O pacote \emph{magrittr} não faz parte do pacote tidyverse, mas é carregado por ele, dada a importância do operador pipe.
 
@@ -194,24 +176,6 @@ Ou então podemos chamar apenas o pacote \emph{tidyverse}.
 \KeywordTok{library}\NormalTok{(tidyverse)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
-\end{verbatim}
-
-\begin{verbatim}
-## v ggplot2 3.3.3     v stringr 1.4.0
-## v readr   1.4.0     v forcats 0.5.1
-## v purrr   0.3.4
-\end{verbatim}
-
-\begin{verbatim}
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x magrittr::extract() masks tidyr::extract()
-## x dplyr::filter()     masks stats::filter()
-## x dplyr::lag()        masks stats::lag()
-## x purrr::set_names()  masks magrittr::set_names()
-\end{verbatim}
 
 Vamos trabalhar \textbf{algumas} funções destes pacotes.
 
@@ -603,6 +567,8 @@ Vamos trabalhar com conjuntos de dados presentes no R.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# ["linhas", "colunas"]}
+
 \NormalTok{carros[}\DecValTok{1}\NormalTok{, ]}
 \end{Highlighting}
 \end{Shaded}
@@ -690,18 +656,6 @@ Vamos trabalhar com conjuntos de dados presentes no R.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{carros[[}\DecValTok{1}\NormalTok{]]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
-## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
-## [31] 15.0 21.4
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{carros[[}\StringTok{"mpg"}\NormalTok{]]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1599,16 +1553,16 @@ Vamos trabalhar com conjuntos de dados presentes no R.
 ## # A tibble: 10 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
 ##           <dbl>       <dbl>        <dbl>       <dbl> <fct>     
-##  1          6.4         2.8          5.6         2.1 virginica 
-##  2          4.9         3.6          1.4         0.1 setosa    
-##  3          4.9         2.4          3.3         1   versicolor
-##  4          5.9         3.2          4.8         1.8 versicolor
-##  5          4.9         3.1          1.5         0.2 setosa    
-##  6          6.6         3            4.4         1.4 versicolor
-##  7          6.7         3.1          4.4         1.4 versicolor
-##  8          7.2         3.6          6.1         2.5 virginica 
-##  9          5.6         2.7          4.2         1.3 versicolor
-## 10          4.8         3            1.4         0.3 setosa
+##  1          5.1         3.7          1.5         0.4 setosa    
+##  2          4.4         3            1.3         0.2 setosa    
+##  3          7.7         2.6          6.9         2.3 virginica 
+##  4          6           2.7          5.1         1.6 versicolor
+##  5          6.3         2.5          4.9         1.5 versicolor
+##  6          5.7         3.8          1.7         0.3 setosa    
+##  7          5.4         3.4          1.7         0.2 setosa    
+##  8          6.4         3.1          5.5         1.8 virginica 
+##  9          6.1         3            4.6         1.4 versicolor
+## 10          5.6         3            4.5         1.5 versicolor
 \end{verbatim}
 
 \begin{Shaded}
@@ -1801,13 +1755,6 @@ Vamos trabalhar com conjuntos de dados presentes no R.
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Values are not uniquely identified; output will contain list-cols.
-## * Use `values_fn = list` to suppress this warning.
-## * Use `values_fn = length` to identify where the duplicates arise
-## * Use `values_fn = {summary_fun}` to summarise duplicates
-\end{verbatim}
-
-\begin{verbatim}
 ## # A tibble: 8 x 5
 ##   skin_color  Tatooine Naboo Alderaan Stewjon
 ##   <chr>          <dbl> <dbl>    <dbl>   <dbl>
@@ -1829,13 +1776,6 @@ Vamos trabalhar com conjuntos de dados presentes no R.
 \StringTok{  }\KeywordTok{pivot_longer}\NormalTok{(}\DataTypeTok{cols =} \DecValTok{2}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{names_to =} \StringTok{"homerworld"}\NormalTok{, }\DataTypeTok{values_to =} \StringTok{"mass"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning: Values are not uniquely identified; output will contain list-cols.
-## * Use `values_fn = list` to suppress this warning.
-## * Use `values_fn = length` to identify where the duplicates arise
-## * Use `values_fn = {summary_fun}` to summarise duplicates
-\end{verbatim}
 
 \begin{verbatim}
 ## # A tibble: 24 x 3
@@ -1864,13 +1804,6 @@ Vamos trabalhar com conjuntos de dados presentes no R.
 \StringTok{  }\KeywordTok{drop_na}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning: Values are not uniquely identified; output will contain list-cols.
-## * Use `values_fn = list` to suppress this warning.
-## * Use `values_fn = length` to identify where the duplicates arise
-## * Use `values_fn = {summary_fun}` to summarise duplicates
-\end{verbatim}
 
 \begin{verbatim}
 ## # A tibble: 10 x 3
@@ -1975,9 +1908,6 @@ Importar o arquivo excel de nome ``dados'': (\url{https://github.com/wilson0106/
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(readxl)}
-\NormalTok{dados <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"dados.xlsx"}\NormalTok{)}
-
 \NormalTok{dados }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{select}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{distinct}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
@@ -2102,17 +2032,6 @@ Importar o arquivo excel de nome ``tarefa'' (\url{https://github.com/wilson0106/
 
 1 - A partir da seguinte planilha:
 
-\begin{verbatim}
-## 
-## Attaching package: 'kableExtra'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:dplyr':
-## 
-##     group_rows
-\end{verbatim}
-
 \begin{tabular}{l|l|r|r|l}
 \hline
 especie & experimento & replica & mortalidade & avaliador\\
@@ -2193,7 +2112,7 @@ Pre-teste & alta & 2 & 84 & ninguém\\
 \hline
 \end{tabular}
 
-Produza as tabelas a seguir utilizando as funções acima. Tente executar com apenas um comando e o mínimo de funções possíveis. \textbf{Utilize o operador pipe: \%\textgreater{}\%"}. \textbf{Se houver observações iguais remova-as}
+Produza as tabelas a seguir. Tente executar com apenas um comando e o mínimo de funções possíveis. \textbf{Utilize o operador pipe: \%\textgreater{}\%"}. \textbf{Se houver observações iguais remova-as}
 
 \begin{tabular}{l|r|r|r|r}
 \hline
@@ -2218,10 +2137,6 @@ alta & 2 & 78 & 100 & 50\\
 alta & 3 & 71 & 95 & 52\\
 \hline
 \end{tabular}
-
-\begin{verbatim}
-## `summarise()` has grouped output by 'especie'. You can override using the `.groups` argument.
-\end{verbatim}
 
 \begin{tabular}{l|l|r|r|r}
 \hline
@@ -2249,7 +2164,7 @@ sp3 & alta & 49.00000 & 3.605551 & 3\\
 
 2 - A partir das seguintes tabelas:
 
-Salinidade
+\textbf{Salinidade}
 
 \begin{tabular}{l|r|r|r|r|r}
 \hline
@@ -2267,7 +2182,7 @@ Rep\_5 & 26 & 29 & 29 & 33 & 30\\
 \hline
 \end{tabular}
 
-Temperatura
+\textbf{Temperatura}
 
 \begin{tabular}{l|r|r|r|r|r}
 \hline
@@ -2285,7 +2200,7 @@ Rep\_5 & 20 & 17 & 19 & 23 & 19\\
 \hline
 \end{tabular}
 
-pH
+\textbf{pH}
 
 \begin{tabular}{l|r|r|r|r|r}
 \hline
@@ -2303,7 +2218,7 @@ Rep\_5 & 6.38 & 6.24 & 7.84 & 7.87 & 7.21\\
 \hline
 \end{tabular}
 
-Mortalidade
+\textbf{Mortalidade}
 
 \begin{tabular}{l|r|r|r|r|r}
 \hline
