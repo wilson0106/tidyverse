@@ -1,0 +1,189 @@
+# *dplyr*
+
+
+## count() e add_count() - conta o número de linhas em função da variável especificada; adiciona uma nova coluna com a contagem do número de linhas em função da variável especificada
+```{r}
+flores %>% 
+  count(Species)
+
+flores %>% 
+  add_count(Species)
+```
+
+
+## arrange() - rearranja as linhas em função da variável especificada
+```{r}
+flores %>% 
+  arrange(Species)
+
+flores %>% 
+  arrange(desc(Species))
+
+flores %>% 
+  arrange(factor(Species, levels = c("versicolor", "setosa", "virginica")))
+```
+
+
+## bind_cols() - une planilhas em colunas
+```{r}
+parte1 <- flores[,1:2]
+parte2 <- flores[,3:5]
+
+bind_cols(parte1, parte2)
+```
+
+
+## bind_rows() - une planilhas em linhas
+```{r}
+parte1 <- flores[1:10,]
+parte2 <- flores[11:150,]
+
+bind_rows(parte1, parte2)
+```
+
+
+## distinct() - remove as linhas que são exatamente iguais
+```{r}
+flores
+
+flores %>% 
+  distinct()
+
+flores %>% 
+  distinct() %>% 
+  count(Species)
+```
+
+
+## filter() - filtra as linhas que satisfação alguma condição
+```{r}
+flores %>% 
+  filter(Species == "setosa")
+
+flores %>% 
+  filter(Species %in% c("setosa", "virginica"))
+
+flores %>% 
+  filter(Sepal.Length >= mean(Sepal.Length))
+
+flores %>% 
+  filter(Species == "setosa") %>% 
+  filter(Sepal.Length >= mean(Sepal.Length))
+
+flores %>% 
+  filter(Petal.Length >= mean(Petal.Length) & Petal.Width >= mean(Petal.Width))
+
+flores %>% 
+  filter(Petal.Length >= mean(Petal.Length) & Petal.Width >= mean(Petal.Width)) %>% 
+  count(Species)
+```
+
+
+## group_by() - agrupa as linhas em função dos valores de alguma variável
+```{r}
+#Ver esta função juntamente com mutate(), transmute() e summarise()
+
+flores %>% 
+  group_by(Species)
+```
+
+
+## mutate() e transmute() - adiciona novas variáveis e preserva as existentes; adiciona novas variáveis e não preserva as existentes
+```{r}
+flores %>%
+  mutate(teste = Petal.Length + Sepal.Length)
+
+flores %>%
+  group_by(Species) %>% 
+  mutate(PL_media = mean(Petal.Length))
+
+flores %>%
+  group_by(Species) %>% 
+  transmute(PL.média = mean(Petal.Length))
+
+flores %>%
+  group_by(Species) %>% 
+  transmute(PL.média = mean(Petal.Length), 
+            SL.média = mean(Sepal.Length))
+```
+
+
+## na_if() - Substitui o valor especificado por NA
+```{r}
+flores %>% 
+  mutate(Species = na_if(Species, "setosa"))
+
+flores %>%
+  mutate(Petal.Length = na_if(Petal.Length, 1.4))
+
+flores %>%
+  mutate(Sepal.Length = na_if(Sepal.Length, 5.1))
+```
+
+
+## recode() e recode_factor() - substitui um determinado valor por outro, se variável for númerica usar recode(), se for fator usar recode_factor()
+```{r}
+flores %>% 
+  mutate(Sepal.Length = recode(Sepal.Length, `5.1` = 0))
+
+flores %>%
+  mutate(Species = recode_factor(Species, setosa = "sts"))
+```
+
+
+## relocate() - altera a ordem das variáveis
+```{r}
+flores %>% 
+  relocate(Species, .before = Sepal.Length)
+```
+
+
+## rename() - altera o nome das variáveis
+```{r}
+flores %>% 
+  rename(sp = Species)
+```
+
+
+## select() - Seleciona variáveis
+```{r}
+flores %>% 
+  select(Species)
+
+flores %>% 
+  select(starts_with("Sepal"))
+
+flores %>% 
+  select(ends_with("Length"))
+
+flores %>% 
+    select(Species, Sepal.Length)
+```
+
+
+## slice() - Seleciona linhas
+```{r}
+flores %>% 
+    slice(3:15)
+
+flores %>% 
+    slice_sample(n = 10)
+
+flores %>% 
+    slice_min(Petal.Length, n = 10)
+
+flores %>% 
+    slice_max(Petal.Length, n = 10)
+```
+
+
+## summarise() - sumariza os dados
+```{r}
+flores %>%
+  group_by(Species) %>% 
+  summarise(N = n(),
+            PL.média = mean(Petal.Length),
+            SL.média = mean(Sepal.Length),
+            PW.média = mean(Petal.Width),
+            SW.média = mean(Sepal.Width))
+```

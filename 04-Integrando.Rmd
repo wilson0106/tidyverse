@@ -1,0 +1,37 @@
+# Integrando os pacotes *tibble*, *dplyr*, *tidyr* e *magrittr*
+
+
+Importar o arquivo excel de nome "dados" presente na página para resolução desta tarefa.
+
+```{r}
+dados %>% 
+  select(1:4) %>% 
+  distinct() %>% 
+  filter(ano == "2020") %>% 
+  pivot_wider(id_cols = c(ano, mes), 
+              names_from = especie, 
+              values_from = abundancia)
+
+dados %>% 
+  select(mes, temperatura) %>% 
+  group_by(mes) %>% 
+  summarise(temp_media = mean(temperatura, na.rm = TRUE)) %>% 
+  arrange(factor(mes, levels = c("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro")))
+
+dados %>% 
+  select(mes, temperatura) %>% 
+  group_by(mes) %>% 
+  summarise(temp_media = mean(temperatura, na.rm = TRUE), 
+            temp_sd = sd(temperatura, na.rm = TRUE)) %>% 
+  arrange(factor(mes, levels = c("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro")))
+
+dados %>% 
+  select(mes, temperatura, salinidade) %>% 
+  group_by(mes) %>% 
+  summarise(temp_media = mean(temperatura, na.rm = TRUE), 
+            temp_sd = sd(temperatura, na.rm = TRUE), 
+            sal_media = mean(salinidade, na.rm = TRUE), 
+            sal_sd = sd(salinidade, na.rm = TRUE)) %>% 
+  arrange(factor(mes, levels = c("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"))) %>%
+  mutate(temp_sal = temp_media/sal_media)
+```

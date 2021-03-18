@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Exercício | Tidyverse - aula 1 - Introdução</title>
+  <meta name="description" content="Chapter 7 Exercício | Tidyverse - aula 1 - Introdução" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Exercício | Tidyverse - aula 1 - Introdução" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Exercício | Tidyverse - aula 1 - Introdução" />
+  
+  
+  
+
+<meta name="author" content="Wilson Souza" />
+
+
+<meta name="date" content="2021-03-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="integrando-os-pacotes-tibble-dplyr-tidyr-e-magrittr.html"/>
+<link rel="next" href="resposta-exercício.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> </a></li>
+<li class="chapter" data-level="2" data-path="introdução-pacotes.html"><a href="introdução-pacotes.html"><i class="fa fa-check"></i><b>2</b> Introdução - Pacotes</a><ul>
+<li class="chapter" data-level="2.0.1" data-path="introdução-pacotes.html"><a href="introdução-pacotes.html#do-pacote-tibble-iremos-trabalhar-as-seguintes-funções"><i class="fa fa-check"></i><b>2.0.1</b> Do pacote <em>tibble</em> iremos trabalhar as seguintes funções:</a></li>
+<li class="chapter" data-level="2.0.2" data-path="introdução-pacotes.html"><a href="introdução-pacotes.html#do-pacote-dplyr-iremos-trabalhas-as-seguintes-funções"><i class="fa fa-check"></i><b>2.0.2</b> Do pacote <em>dplyr</em> iremos trabalhas as seguintes funções:</a></li>
+<li class="chapter" data-level="2.0.3" data-path="introdução-pacotes.html"><a href="introdução-pacotes.html#do-pacote-tidyr-iremos-trabalhar-as-seguintes-funções"><i class="fa fa-check"></i><b>2.0.3</b> Do pacote <em>tidyr</em> iremos trabalhar as seguintes funções:</a></li>
+<li class="chapter" data-level="2.0.4" data-path="introdução-pacotes.html"><a href="introdução-pacotes.html#do-pacote-magrittr-iremos-trabalhar-com-o-operador-chamado-pipe"><i class="fa fa-check"></i><b>2.0.4</b> Do pacote <em>magrittr</em> iremos trabalhar com o operador chamado <strong>pipe</strong>:</a></li>
+<li class="chapter" data-level="2.1" data-path="introdução-pacotes.html"><a href="introdução-pacotes.html#importando-os-dados"><i class="fa fa-check"></i><b>2.1</b> Importando os dados</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>3</b> <em>tibble</em></a><ul>
+<li class="chapter" data-level="3.1" data-path="tibble.html"><a href="tibble.html#as_tibble---converte-um-objeto-do-tipo-matriz-ou-data-frame-para-tbl_df"><i class="fa fa-check"></i><b>3.1</b> as_tibble() - converte um objeto do tipo matriz ou data frame para tbl_df</a></li>
+<li class="chapter" data-level="3.2" data-path="tibble.html"><a href="tibble.html#add_column---adiciona-uma-coluna-nova-a-planilha"><i class="fa fa-check"></i><b>3.2</b> add_column() - adiciona uma coluna nova a planilha</a></li>
+<li class="chapter" data-level="3.3" data-path="tibble.html"><a href="tibble.html#add_row---adiciona-uma-nova-linha-a-planilha"><i class="fa fa-check"></i><b>3.3</b> add_row() - adiciona uma nova linha a planilha</a></li>
+<li class="chapter" data-level="3.4" data-path="tibble.html"><a href="tibble.html#remove_rownames-e-column_to_rownames---remove-os-nomes-das-colunas-e-adiciona-um-nome-as-colunas"><i class="fa fa-check"></i><b>3.4</b> remove_rownames() e column_to_rownames() - Remove os nomes das colunas e adiciona um nome as colunas</a></li>
+<li class="chapter" data-level="3.5" data-path="tibble.html"><a href="tibble.html#rownames_to_column---adiciona-o-nome-das-linhas-como-uma-coluna"><i class="fa fa-check"></i><b>3.5</b> rownames_to_column() - adiciona o nome das linhas como uma coluna</a></li>
+<li class="chapter" data-level="3.6" data-path="tibble.html"><a href="tibble.html#subsetting---forma-de-escrita-que-permite-cortarselecionar-a-planilha-em-função-das-linhas-e-colunas"><i class="fa fa-check"></i><b>3.6</b> subsetting - forma de escrita que permite cortar/selecionar a planilha em função das linhas e colunas</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> <em>dplyr</em></a><ul>
+<li class="chapter" data-level="4.1" data-path="dplyr.html"><a href="dplyr.html#count-e-add_count---conta-o-número-de-linhas-em-função-da-variável-especificada-adiciona-uma-nova-coluna-com-a-contagem-do-número-de-linhas-em-função-da-variável-especificada"><i class="fa fa-check"></i><b>4.1</b> count() e add_count() - conta o número de linhas em função da variável especificada; adiciona uma nova coluna com a contagem do número de linhas em função da variável especificada</a></li>
+<li class="chapter" data-level="4.2" data-path="dplyr.html"><a href="dplyr.html#arrange---rearranja-as-linhas-em-função-da-variável-especificada"><i class="fa fa-check"></i><b>4.2</b> arrange() - rearranja as linhas em função da variável especificada</a></li>
+<li class="chapter" data-level="4.3" data-path="dplyr.html"><a href="dplyr.html#bind_cols---une-planilhas-em-colunas"><i class="fa fa-check"></i><b>4.3</b> bind_cols() - une planilhas em colunas</a></li>
+<li class="chapter" data-level="4.4" data-path="dplyr.html"><a href="dplyr.html#bind_rows---une-planilhas-em-linhas"><i class="fa fa-check"></i><b>4.4</b> bind_rows() - une planilhas em linhas</a></li>
+<li class="chapter" data-level="4.5" data-path="dplyr.html"><a href="dplyr.html#distinct---remove-as-linhas-que-são-exatamente-iguais"><i class="fa fa-check"></i><b>4.5</b> distinct() - remove as linhas que são exatamente iguais</a></li>
+<li class="chapter" data-level="4.6" data-path="dplyr.html"><a href="dplyr.html#filter---filtra-as-linhas-que-satisfação-alguma-condição"><i class="fa fa-check"></i><b>4.6</b> filter() - filtra as linhas que satisfação alguma condição</a></li>
+<li class="chapter" data-level="4.7" data-path="dplyr.html"><a href="dplyr.html#group_by---agrupa-as-linhas-em-função-dos-valores-de-alguma-variável"><i class="fa fa-check"></i><b>4.7</b> group_by() - agrupa as linhas em função dos valores de alguma variável</a></li>
+<li class="chapter" data-level="4.8" data-path="dplyr.html"><a href="dplyr.html#mutate-e-transmute---adiciona-novas-variáveis-e-preserva-as-existentes-adiciona-novas-variáveis-e-não-preserva-as-existentes"><i class="fa fa-check"></i><b>4.8</b> mutate() e transmute() - adiciona novas variáveis e preserva as existentes; adiciona novas variáveis e não preserva as existentes</a></li>
+<li class="chapter" data-level="4.9" data-path="dplyr.html"><a href="dplyr.html#na_if---substitui-o-valor-especificado-por-na"><i class="fa fa-check"></i><b>4.9</b> na_if() - Substitui o valor especificado por NA</a></li>
+<li class="chapter" data-level="4.10" data-path="dplyr.html"><a href="dplyr.html#recode-e-recode_factor---substitui-um-determinado-valor-por-outro-se-variável-for-númerica-usar-recode-se-for-fator-usar-recode_factor"><i class="fa fa-check"></i><b>4.10</b> recode() e recode_factor() - substitui um determinado valor por outro, se variável for númerica usar recode(), se for fator usar recode_factor()</a></li>
+<li class="chapter" data-level="4.11" data-path="dplyr.html"><a href="dplyr.html#relocate---altera-a-ordem-das-variáveis"><i class="fa fa-check"></i><b>4.11</b> relocate() - altera a ordem das variáveis</a></li>
+<li class="chapter" data-level="4.12" data-path="dplyr.html"><a href="dplyr.html#rename---altera-o-nome-das-variáveis"><i class="fa fa-check"></i><b>4.12</b> rename() - altera o nome das variáveis</a></li>
+<li class="chapter" data-level="4.13" data-path="dplyr.html"><a href="dplyr.html#select---seleciona-variáveis"><i class="fa fa-check"></i><b>4.13</b> select() - Seleciona variáveis</a></li>
+<li class="chapter" data-level="4.14" data-path="dplyr.html"><a href="dplyr.html#slice---seleciona-linhas"><i class="fa fa-check"></i><b>4.14</b> slice() - Seleciona linhas</a></li>
+<li class="chapter" data-level="4.15" data-path="dplyr.html"><a href="dplyr.html#summarise---sumariza-os-dados"><i class="fa fa-check"></i><b>4.15</b> summarise() - sumariza os dados</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>5</b> <em>tidyr</em></a><ul>
+<li class="chapter" data-level="5.1" data-path="tidyr.html"><a href="tidyr.html#drop_na---remove-as-linhas-com-na"><i class="fa fa-check"></i><b>5.1</b> drop_na() - remove as linhas com NA</a></li>
+<li class="chapter" data-level="5.2" data-path="tidyr.html"><a href="tidyr.html#replace_na---substitui-os-valores-de-na-por-outro-valor"><i class="fa fa-check"></i><b>5.2</b> replace_na() - Substitui os valores de NA por outro valor</a></li>
+<li class="chapter" data-level="5.3" data-path="tidyr.html"><a href="tidyr.html#pivot_longer-e-pivot_wider---aumenta-o-número-de-linhas-e-diminui-o-número-de-colunas-aumenta-o-número-de-colunas-e-diminui-o-número-de-linhas"><i class="fa fa-check"></i><b>5.3</b> pivot_longer() e pivot_wider() - Aumenta o número de linhas e diminui o número de colunas; aumenta o número de colunas e diminui o número de linhas</a></li>
+<li class="chapter" data-level="5.4" data-path="tidyr.html"><a href="tidyr.html#separate-e-unite---separa-uma-coluna-em-múltiplas-colunas-une-múltiplas-colunas"><i class="fa fa-check"></i><b>5.4</b> separate() e unite() - Separa uma coluna em múltiplas colunas; Une múltiplas colunas</a></li>
+<li class="chapter" data-level="5.5" data-path="tidyr.html"><a href="tidyr.html#fill---preenche-as-células-com-na-com-o-valor-posterior-ou-anterior-da-mesma-coluna"><i class="fa fa-check"></i><b>5.5</b> fill() - Preenche as células com NA com o valor posterior ou anterior da mesma coluna</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="integrando-os-pacotes-tibble-dplyr-tidyr-e-magrittr.html"><a href="integrando-os-pacotes-tibble-dplyr-tidyr-e-magrittr.html"><i class="fa fa-check"></i><b>6</b> Integrando os pacotes <em>tibble</em>, <em>dplyr</em>, <em>tidyr</em> e <em>magrittr</em></a></li>
+<li class="chapter" data-level="7" data-path="exercício.html"><a href="exercício.html"><i class="fa fa-check"></i><b>7</b> Exercício</a></li>
+<li class="chapter" data-level="8" data-path="resposta-exercício.html"><a href="resposta-exercício.html"><i class="fa fa-check"></i><b>8</b> Resposta exercício</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tidyverse - aula 1 - Introdução</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exercício" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Exercício</h1>
+<p>Importar o arquivo excel de nome “tarefa” presente na página para resolução destes exercícios.</p>
+<p>1 - Faça a conversão da planilha para a tabela a seguir utilizando as funções acima. Tente executar com apenas um comando e o mínimo de funções possíveis. <strong>Utilize o operador pipe: %&gt;%&quot;</strong>. <strong>Se houver observações iguais remova-as</strong></p>
+<p>2 - Converta as seguintes tabelas (salinidade, temperatura, pH e mortalidade) para a seguinte planilha. Tente executar com mínimo de funções possíveis. <strong>Dica: converta cada tabela em uma planilha e as una como colunas</strong>. <strong>“Utilize o operador pipe: %&gt;%”</strong>. <strong>Se houver observações iguais remova-as</strong></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="integrando-os-pacotes-tibble-dplyr-tidyr-e-magrittr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="resposta-exercício.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["tidyverse.pdf", "tidyverse.tarefa"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

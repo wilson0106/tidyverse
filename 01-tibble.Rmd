@@ -1,0 +1,70 @@
+# *tibble*
+
+
+## as_tibble() - converte um objeto do tipo matriz ou data frame para tbl_df
+```{r}
+obj1 <- carros
+obj2 <- carros %>%
+  data.frame()
+
+# ["linhas", "colunas"]
+obj1[, 1]
+obj2[, 1]
+```
+
+
+## add_column() - adiciona uma coluna nova a planilha
+```{r}
+carros %>%
+  add_column(teste = 0)
+
+carros
+
+carros %>% 
+  add_column(teste = 0, .before = "mpg")
+```
+
+
+## add_row() - adiciona uma nova linha a planilha
+```{r}
+carros %>%
+  add_row()
+
+carros
+
+carros %>% 
+  add_row(.before = 1)
+```
+
+
+## remove_rownames() e column_to_rownames() - Remove os nomes das colunas e adiciona um nome as colunas
+```{r}
+carros %>%
+  add_column(teste = c("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","aa","bb","cc","dd","ee","ff")) %>% 
+  remove_rownames() %>%
+  column_to_rownames("teste")
+```
+
+
+## rownames_to_column() - adiciona o nome das linhas como uma coluna
+```{r}
+carros %>% 
+  rownames_to_column(var = "teste")
+```
+
+
+## subsetting - forma de escrita que permite cortar/selecionar a planilha em função das linhas e colunas
+```{r}
+carros[1, ]
+carros[2, ]
+carros[1:2, ]
+
+carros[, 1]
+carros[, "mpg"]
+carros[[1]]
+carros[["mpg"]]
+carros[["mpg"]]
+carros$mpg
+
+carros[, c("mpg", "cyl")]
+```

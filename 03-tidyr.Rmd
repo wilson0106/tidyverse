@@ -1,0 +1,70 @@
+# *tidyr*
+
+
+## drop_na() - remove as linhas com NA
+```{r}
+starwars %>% 
+  select(hair_color) %>% 
+  drop_na()
+
+starwars %>%
+  drop_na()
+```
+
+
+## replace_na() - Substitui os valores de NA por outro valor
+```{r}
+starwars %>% 
+  replace_na(list(hair_color = "orange"))
+```
+
+
+## pivot_longer() e pivot_wider() - Aumenta o número de linhas e diminui o número de colunas; aumenta o número de colunas e diminui o número de linhas
+```{r}
+starwars[1:10,] %>%
+  select(homeworld, skin_color, mass) %>% 
+  pivot_wider(names_from = homeworld, values_from = mass, values_fn = list)
+
+starwars[1:10,] %>%
+  select(homeworld, skin_color, mass) %>% 
+  pivot_wider(names_from = homeworld, values_from = mass, values_fn = list) %>% 
+  view()
+
+starwars[1:10,] %>%
+  select(homeworld, skin_color, mass) %>% 
+  pivot_wider(names_from = homeworld, values_from = mass) %>% 
+  unchop(c(2:5))
+
+starwars[1:10,] %>%
+  select(skin_color, homeworld, mass) %>%
+  pivot_wider(names_from = homeworld, values_from = mass) %>%
+  pivot_longer(cols = 2:5, names_to = "homerworld", values_to = "mass")
+
+starwars[1:10,] %>%
+  select(homeworld, skin_color, mass) %>%
+  pivot_wider(names_from = homeworld, values_from = mass) %>%
+  pivot_longer(cols = 2:5, names_to = "homeworld", values_to = "mass") %>%
+  unchop(everything()) %>% 
+  drop_na()
+```
+
+
+## separate() e unite() - Separa uma coluna em múltiplas colunas; Une múltiplas colunas
+```{r}
+starwars[1:10,] %>% 
+  select(sex, gender, homeworld) %>% 
+  unite("sexgender", sex:gender, sep = "-")
+
+starwars[1:10,] %>% 
+  select(sex, gender, homeworld) %>% 
+  unite("sexgender", sex:gender, sep = "-") %>% 
+  separate(sexgender, c("sex", "gender"), sep = "-")
+```
+
+
+## fill() - Preenche as células com NA com o valor posterior ou anterior da mesma coluna
+```{r}
+starwars %>% 
+  select(hair_color) %>% 
+  fill(hair_color)
+```

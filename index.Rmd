@@ -1,0 +1,109 @@
+--- 
+title: "Tidyverse - aula 1 - Introdução"
+author: "Wilson Souza"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+---
+# Introdução - Pacotes
+
+
+Para começar precisamos instalar os seguintes pacotes:
+```{r echo = FALSE, eval = FALSE}
+install.packages("tibble")
+install.packages("dplyr")
+install.packages("tidyr")
+install.packages("magrittr")
+```
+
+
+Ou então, um único pacote **tidyverse**. Que engloba todos os pacotes acima.
+```{r echo = FALSE, eval = FALSE}
+install.packages("tidyverse")
+```
+
+
+Após instalados precisamos carrega-los. Podemos fazer isso chamando cada um dos pacotes separadamente.
+```{r}
+library(tibble)
+library(dplyr)
+library(tidyr)
+library(magrittr) # não faz parte do pacote tidyverse, mas é carregado por ele, dada a importância do operador pipe.
+```
+
+
+Ou então podemos chamar apenas o pacote *tidyverse*.
+```{r}
+library(tidyverse)
+```
+
+
+Vamos trabalhar **algumas** funções destes pacotes.
+
+
+### Do pacote *tibble* iremos trabalhar as seguintes funções:
+* add_column()
+* add_row()
+* as_tibble()
+* column_to_rownames()
+* remove_rownames()
+* rownames_to_column()
+* subsetting
+
+
+### Do pacote *dplyr* iremos trabalhas as seguintes funções:
+* add_count()
+* arrange()
+* bind_cols()
+* bind_rows()
+* count()
+* desc()
+* distinct()
+* filter()
+* group_by()
+* mutate()
+* na_if()
+* recode_factor()
+* relocate()
+* rename()
+* select()
+* slice()
+* summarise()
+* transmute()
+
+
+### Do pacote *tidyr* iremos trabalhar as seguintes funções:
+* drop_na()
+* fill()
+* pivot_longer()
+* pivot_wider()
+* replace_na()
+* separate()
+* unite()
+
+
+### Do pacote *magrittr* iremos trabalhar com o operador chamado **pipe**:
+* %>%^[Vamos utilizar este operador em todos os exemplos]
+
+
+## Importando os dados
+
+
+Caso não souberem importar os dados de um arquivo \*.csv ou \*.excel presente no seu PC ao fim da aula eu explico. Os exemplos de como as funções trabalham seguem do mesmo jeito.
+
+
+Vamos trabalhar com conjuntos de dados presentes no R.
+
+
+```{r}
+data(mtcars)
+carros <- as_tibble(mtcars, rownames = NA)
+
+data(iris)
+flores <- as_tibble(iris)
+
+data(starwars)
+starwars <- as_tibble(starwars)
+```
