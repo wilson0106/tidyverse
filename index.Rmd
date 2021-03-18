@@ -30,8 +30,9 @@ Após instalados precisamos carrega-los. Podemos fazer isso chamando cada um dos
 library(tibble)
 library(dplyr)
 library(tidyr)
-library(magrittr) # não faz parte do pacote tidyverse, mas é carregado por ele, dada a importância do operador pipe.
+library(magrittr)
 ```
+OBS: O pacote *magrittr* não faz parte do pacote tidyverse, mas é carregado por ele, dada a importância do operador pipe.
 
 
 Ou então podemos chamar apenas o pacote *tidyverse*.

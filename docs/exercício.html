@@ -196,8 +196,1954 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exercício" class="section level1">
 <h1><span class="header-section-number">Capítulo 6</span> Exercício</h1>
 <p>Importar o arquivo excel de nome “tarefa” (<a href="https://github.com/wilson0106/tidyverse/blob/master/tarefa.xlsx" class="uri">https://github.com/wilson0106/tidyverse/blob/master/tarefa.xlsx</a>).</p>
-<p>1 - Faça a conversão da planilha para as tabelas a seguir utilizando as funções acima. Tente executar com apenas um comando e o mínimo de funções possíveis. <strong>Utilize o operador pipe: %&gt;%&quot;</strong>. <strong>Se houver observações iguais remova-as</strong></p>
-<p>2 - Converta as seguintes tabelas (salinidade, temperatura, pH e mortalidade) para a seguinte planilha. Tente executar com mínimo de funções possíveis. <strong>Dica: converta cada tabela em uma planilha e as una como colunas</strong>. <strong>“Utilize o operador pipe: %&gt;%”</strong>. <strong>Se houver observações iguais remova-as</strong></p>
+<p>1 - A partir da seguinte planilha:</p>
+<pre><code>## 
+## Attaching package: &#39;kableExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     group_rows</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+especie
+</th>
+<th style="text-align:left;">
+experimento
+</th>
+<th style="text-align:right;">
+replica
+</th>
+<th style="text-align:right;">
+mortalidade
+</th>
+<th style="text-align:left;">
+avaliador
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+ninguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:left;">
+ninguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:left;">
+ninguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+ninguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+ninguem
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+ninguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+ninguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:left;">
+ninguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:left;">
+ninguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:left;">
+ninguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp3
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp3
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp3
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp3
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp3
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp3
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp3
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp3
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp3
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pre-teste
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pre-teste
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pre-teste
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pre-teste
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pre-teste
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+alguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pre-teste
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+ninguém
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pre-teste
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+ninguém
+</td>
+</tr>
+</tbody>
+</table>
+<p>Produza as tabelas a seguir utilizando as funções acima. Tente executar com apenas um comando e o mínimo de funções possíveis. <strong>Utilize o operador pipe: %&gt;%&quot;</strong>. <strong>Se houver observações iguais remova-as</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+experimento
+</th>
+<th style="text-align:right;">
+replica
+</th>
+<th style="text-align:right;">
+sp1
+</th>
+<th style="text-align:right;">
+sp2
+</th>
+<th style="text-align:right;">
+sp3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:right;">
+52
+</td>
+</tr>
+</tbody>
+</table>
+<pre><code>## `summarise()` has grouped output by &#39;especie&#39;. You can override using the `.groups` argument.</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+especie
+</th>
+<th style="text-align:left;">
+experimento
+</th>
+<th style="text-align:right;">
+media
+</th>
+<th style="text-align:right;">
+desvio
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+17.33333
+</td>
+<td style="text-align:right;">
+2.516611
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+31.66667
+</td>
+<td style="text-align:right;">
+2.081666
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp3
+</td>
+<td style="text-align:left;">
+baixa
+</td>
+<td style="text-align:right;">
+6.00000
+</td>
+<td style="text-align:right;">
+2.645751
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+67.50000
+</td>
+<td style="text-align:right;">
+17.677670
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+73.50000
+</td>
+<td style="text-align:right;">
+7.778175
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp3
+</td>
+<td style="text-align:left;">
+media
+</td>
+<td style="text-align:right;">
+28.00000
+</td>
+<td style="text-align:right;">
+4.000000
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp1
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+75.66667
+</td>
+<td style="text-align:right;">
+4.041452
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp2
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+98.33333
+</td>
+<td style="text-align:right;">
+2.886751
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sp3
+</td>
+<td style="text-align:left;">
+alta
+</td>
+<td style="text-align:right;">
+49.00000
+</td>
+<td style="text-align:right;">
+3.605551
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+</tbody>
+</table>
+<p>2 - A partir das seguintes tabelas:</p>
+Salinidade
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+replica
+</th>
+<th style="text-align:right;">
+1h
+</th>
+<th style="text-align:right;">
+2h
+</th>
+<th style="text-align:right;">
+3h
+</th>
+<th style="text-align:right;">
+4h
+</th>
+<th style="text-align:right;">
+5h
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Rep_1
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_2
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_3
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_4
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_5
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+</tbody>
+</table>
+Temperatura
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+replica
+</th>
+<th style="text-align:right;">
+1h
+</th>
+<th style="text-align:right;">
+2h
+</th>
+<th style="text-align:right;">
+3h
+</th>
+<th style="text-align:right;">
+4h
+</th>
+<th style="text-align:right;">
+5h
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Rep_1
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_2
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_3
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_4
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_5
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+</tbody>
+</table>
+pH
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+replica
+</th>
+<th style="text-align:right;">
+1h
+</th>
+<th style="text-align:right;">
+2h
+</th>
+<th style="text-align:right;">
+3h
+</th>
+<th style="text-align:right;">
+4h
+</th>
+<th style="text-align:right;">
+5h
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Rep_1
+</td>
+<td style="text-align:right;">
+7.63
+</td>
+<td style="text-align:right;">
+6.51
+</td>
+<td style="text-align:right;">
+7.52
+</td>
+<td style="text-align:right;">
+6.21
+</td>
+<td style="text-align:right;">
+6.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_2
+</td>
+<td style="text-align:right;">
+6.36
+</td>
+<td style="text-align:right;">
+7.42
+</td>
+<td style="text-align:right;">
+7.73
+</td>
+<td style="text-align:right;">
+7.27
+</td>
+<td style="text-align:right;">
+6.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_3
+</td>
+<td style="text-align:right;">
+6.02
+</td>
+<td style="text-align:right;">
+6.56
+</td>
+<td style="text-align:right;">
+7.35
+</td>
+<td style="text-align:right;">
+6.71
+</td>
+<td style="text-align:right;">
+7.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_4
+</td>
+<td style="text-align:right;">
+7.30
+</td>
+<td style="text-align:right;">
+7.57
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+6.79
+</td>
+<td style="text-align:right;">
+7.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_5
+</td>
+<td style="text-align:right;">
+6.38
+</td>
+<td style="text-align:right;">
+6.24
+</td>
+<td style="text-align:right;">
+7.84
+</td>
+<td style="text-align:right;">
+7.87
+</td>
+<td style="text-align:right;">
+7.21
+</td>
+</tr>
+</tbody>
+</table>
+Mortalidade
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+replica
+</th>
+<th style="text-align:right;">
+1h
+</th>
+<th style="text-align:right;">
+2h
+</th>
+<th style="text-align:right;">
+3h
+</th>
+<th style="text-align:right;">
+4h
+</th>
+<th style="text-align:right;">
+5h
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Rep_1
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_2
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_3
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_4
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_5
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+</tbody>
+</table>
+<p>Produza a seguinte planilha. Tente executar com mínimo de funções possíveis. <strong>Dica: converta cada tabela em uma planilha e as una como colunas</strong>. <strong>“Utilize o operador pipe: %&gt;%”</strong>. <strong>Se houver observações iguais remova-as</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+replica
+</th>
+<th style="text-align:left;">
+hora
+</th>
+<th style="text-align:right;">
+salinidade
+</th>
+<th style="text-align:right;">
+temperatura
+</th>
+<th style="text-align:right;">
+pH
+</th>
+<th style="text-align:right;">
+mortalidade
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Rep_1
+</td>
+<td style="text-align:left;">
+1h
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+7.63
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_1
+</td>
+<td style="text-align:left;">
+2h
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+6.51
+</td>
+<td style="text-align:right;">
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_1
+</td>
+<td style="text-align:left;">
+3h
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+7.52
+</td>
+<td style="text-align:right;">
+67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_1
+</td>
+<td style="text-align:left;">
+4h
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+6.21
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_1
+</td>
+<td style="text-align:left;">
+5h
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+6.90
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_2
+</td>
+<td style="text-align:left;">
+1h
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+6.36
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_2
+</td>
+<td style="text-align:left;">
+2h
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+7.42
+</td>
+<td style="text-align:right;">
+52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_2
+</td>
+<td style="text-align:left;">
+3h
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+7.73
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_2
+</td>
+<td style="text-align:left;">
+5h
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+6.55
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_3
+</td>
+<td style="text-align:left;">
+1h
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+6.02
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_3
+</td>
+<td style="text-align:left;">
+3h
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+7.35
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_3
+</td>
+<td style="text-align:left;">
+4h
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+6.71
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_4
+</td>
+<td style="text-align:left;">
+1h
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+7.30
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_4
+</td>
+<td style="text-align:left;">
+2h
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+7.57
+</td>
+<td style="text-align:right;">
+84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_4
+</td>
+<td style="text-align:left;">
+4h
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+6.79
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_4
+</td>
+<td style="text-align:left;">
+5h
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+7.66
+</td>
+<td style="text-align:right;">
+45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_5
+</td>
+<td style="text-align:left;">
+2h
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+6.24
+</td>
+<td style="text-align:right;">
+73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_5
+</td>
+<td style="text-align:left;">
+3h
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+7.84
+</td>
+<td style="text-align:right;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_5
+</td>
+<td style="text-align:left;">
+4h
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+7.87
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rep_5
+</td>
+<td style="text-align:left;">
+5h
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+7.21
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+</tbody>
+</table>
 
 </div>
             </section>

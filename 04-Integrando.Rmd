@@ -1,7 +1,7 @@
 # Integrando os pacotes *tibble*, *dplyr*, *tidyr* e *magrittr*
 
 
-Importar o arquivo excel de nome "dados" presente na página para resolução desta tarefa.
+Importar o arquivo excel de nome "dados": (https://github.com/wilson0106/tidyverse/blob/master/dados.xlsx) 
 
 ```{r}
 library(readxl)

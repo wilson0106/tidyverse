@@ -106,6 +106,20 @@
 \makeatother
 
 \usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
@@ -156,7 +170,7 @@ Após instalados precisamos carrega-los. Podemos fazer isso chamando cada um dos
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(tidyr)}
-\KeywordTok{library}\NormalTok{(magrittr) }\CommentTok{# não faz parte do pacote tidyverse, mas é carregado por ele, dada a importância do operador pipe.}
+\KeywordTok{library}\NormalTok{(magrittr)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -170,6 +184,8 @@ Após instalados precisamos carrega-los. Podemos fazer isso chamando cada um dos
 ## 
 ##     extract
 \end{verbatim}
+
+OBS: O pacote \emph{magrittr} não faz parte do pacote tidyverse, mas é carregado por ele, dada a importância do operador pipe.
 
 Ou então podemos chamar apenas o pacote \emph{tidyverse}.
 
@@ -1583,16 +1599,16 @@ Vamos trabalhar com conjuntos de dados presentes no R.
 ## # A tibble: 10 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
 ##           <dbl>       <dbl>        <dbl>       <dbl> <fct>     
-##  1          5.6         3            4.5         1.5 versicolor
-##  2          5.5         2.3          4           1.3 versicolor
-##  3          6.7         3            5.2         2.3 virginica 
-##  4          4.8         3.4          1.6         0.2 setosa    
-##  5          5.7         2.6          3.5         1   versicolor
-##  6          5.1         2.5          3           1.1 versicolor
-##  7          5.6         2.9          3.6         1.3 versicolor
-##  8          4.9         3            1.4         0.2 setosa    
-##  9          6.1         3            4.6         1.4 versicolor
-## 10          6.3         3.3          4.7         1.6 versicolor
+##  1          6.4         2.8          5.6         2.1 virginica 
+##  2          4.9         3.6          1.4         0.1 setosa    
+##  3          4.9         2.4          3.3         1   versicolor
+##  4          5.9         3.2          4.8         1.8 versicolor
+##  5          4.9         3.1          1.5         0.2 setosa    
+##  6          6.6         3            4.4         1.4 versicolor
+##  7          6.7         3.1          4.4         1.4 versicolor
+##  8          7.2         3.6          6.1         2.5 virginica 
+##  9          5.6         2.7          4.2         1.3 versicolor
+## 10          4.8         3            1.4         0.3 setosa
 \end{verbatim}
 
 \begin{Shaded}
@@ -1955,7 +1971,7 @@ Vamos trabalhar com conjuntos de dados presentes no R.
 \hypertarget{integrando-os-pacotes-tibble-dplyr-tidyr-e-magrittr}{%
 \chapter{\texorpdfstring{Integrando os pacotes \emph{tibble}, \emph{dplyr}, \emph{tidyr} e \emph{magrittr}}{Integrando os pacotes tibble, dplyr, tidyr e magrittr}}\label{integrando-os-pacotes-tibble-dplyr-tidyr-e-magrittr}}
 
-Importar o arquivo excel de nome ``dados'' presente na página para resolução desta tarefa.
+Importar o arquivo excel de nome ``dados'': (\url{https://github.com/wilson0106/tidyverse/blob/master/dados.xlsx})
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2084,9 +2100,274 @@ Importar o arquivo excel de nome ``dados'' presente na página para resolução 
 
 Importar o arquivo excel de nome ``tarefa'' (\url{https://github.com/wilson0106/tidyverse/blob/master/tarefa.xlsx}).
 
-1 - Faça a conversão da planilha para as tabelas a seguir utilizando as funções acima. Tente executar com apenas um comando e o mínimo de funções possíveis. \textbf{Utilize o operador pipe: \%\textgreater{}\%"}. \textbf{Se houver observações iguais remova-as}
+1 - A partir da seguinte planilha:
 
-2 - Converta as seguintes tabelas (salinidade, temperatura, pH e mortalidade) para a seguinte planilha. Tente executar com mínimo de funções possíveis. \textbf{Dica: converta cada tabela em uma planilha e as una como colunas}. \textbf{``Utilize o operador pipe: \%\textgreater{}\%''}. \textbf{Se houver observações iguais remova-as}
+\begin{verbatim}
+## 
+## Attaching package: 'kableExtra'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     group_rows
+\end{verbatim}
+
+\begin{tabular}{l|l|r|r|l}
+\hline
+especie & experimento & replica & mortalidade & avaliador\\
+\hline
+sp1 & baixa & 1 & 20 & alguém\\
+\hline
+sp1 & baixa & 2 & 15 & alguém\\
+\hline
+sp1 & baixa & 3 & 17 & alguém\\
+\hline
+sp1 & baixa & 3 & 17 & alguém\\
+\hline
+sp1 & media & 1 & 55 & alguém\\
+\hline
+sp1 & media & 2 & NA & ninguém\\
+\hline
+sp1 & media & 3 & 80 & ninguém\\
+\hline
+sp1 & media & 3 & 80 & ninguém\\
+\hline
+sp1 & alta & 1 & 78 & alguém\\
+\hline
+sp1 & alta & 2 & 78 & alguém\\
+\hline
+sp1 & alta & 3 & 71 & alguém\\
+\hline
+sp2 & baixa & 1 & 34 & alguém\\
+\hline
+sp2 & baixa & 2 & 30 & ninguém\\
+\hline
+sp2 & baixa & 2 & 30 & ninguem\\
+\hline
+sp2 & baixa & 3 & 31 & ninguém\\
+\hline
+sp2 & media & 1 & NA & ninguém\\
+\hline
+sp2 & media & 2 & 79 & ninguém\\
+\hline
+sp2 & media & 3 & 68 & ninguém\\
+\hline
+sp2 & alta & 1 & 100 & ninguém\\
+\hline
+sp2 & alta & 2 & 100 & alguém\\
+\hline
+sp2 & alta & 3 & 95 & alguém\\
+\hline
+sp3 & baixa & 1 & 5 & alguém\\
+\hline
+sp3 & baixa & 2 & 9 & alguém\\
+\hline
+sp3 & baixa & 3 & 4 & alguém\\
+\hline
+sp3 & media & 1 & 32 & alguém\\
+\hline
+sp3 & media & 2 & 28 & alguém\\
+\hline
+sp3 & media & 3 & 24 & alguém\\
+\hline
+sp3 & alta & 1 & 45 & alguém\\
+\hline
+sp3 & alta & 2 & 50 & alguém\\
+\hline
+sp3 & alta & 3 & 52 & alguém\\
+\hline
+Pre-teste & baixa & 1 & 10 & alguém\\
+\hline
+Pre-teste & baixa & 2 & 15 & alguém\\
+\hline
+Pre-teste & baixa & 3 & 13 & alguém\\
+\hline
+Pre-teste & media & 2 & 56 & alguém\\
+\hline
+Pre-teste & media & 3 & 51 & alguém\\
+\hline
+Pre-teste & alta & 1 & 84 & ninguém\\
+\hline
+Pre-teste & alta & 2 & 84 & ninguém\\
+\hline
+\end{tabular}
+
+Produza as tabelas a seguir utilizando as funções acima. Tente executar com apenas um comando e o mínimo de funções possíveis. \textbf{Utilize o operador pipe: \%\textgreater{}\%"}. \textbf{Se houver observações iguais remova-as}
+
+\begin{tabular}{l|r|r|r|r}
+\hline
+experimento & replica & sp1 & sp2 & sp3\\
+\hline
+baixa & 1 & 20 & 34 & 5\\
+\hline
+baixa & 2 & 15 & 30 & 9\\
+\hline
+baixa & 3 & 17 & 31 & 4\\
+\hline
+media & 1 & 55 & NA & 32\\
+\hline
+media & 3 & 80 & 68 & 24\\
+\hline
+media & 2 & NA & 79 & 28\\
+\hline
+alta & 1 & 78 & 100 & 45\\
+\hline
+alta & 2 & 78 & 100 & 50\\
+\hline
+alta & 3 & 71 & 95 & 52\\
+\hline
+\end{tabular}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'especie'. You can override using the `.groups` argument.
+\end{verbatim}
+
+\begin{tabular}{l|l|r|r|r}
+\hline
+especie & experimento & media & desvio & n\\
+\hline
+sp1 & baixa & 17.33333 & 2.516611 & 3\\
+\hline
+sp2 & baixa & 31.66667 & 2.081666 & 3\\
+\hline
+sp3 & baixa & 6.00000 & 2.645751 & 3\\
+\hline
+sp1 & media & 67.50000 & 17.677670 & 2\\
+\hline
+sp2 & media & 73.50000 & 7.778175 & 2\\
+\hline
+sp3 & media & 28.00000 & 4.000000 & 3\\
+\hline
+sp1 & alta & 75.66667 & 4.041452 & 3\\
+\hline
+sp2 & alta & 98.33333 & 2.886751 & 3\\
+\hline
+sp3 & alta & 49.00000 & 3.605551 & 3\\
+\hline
+\end{tabular}
+
+2 - A partir das seguintes tabelas:
+
+Salinidade
+
+\begin{tabular}{l|r|r|r|r|r}
+\hline
+replica & 1h & 2h & 3h & 4h & 5h\\
+\hline
+Rep\_1 & 28 & 26 & 32 & 26 & 29\\
+\hline
+Rep\_2 & 25 & 27 & 32 & 26 & 25\\
+\hline
+Rep\_3 & 29 & 25 & 31 & 25 & NA\\
+\hline
+Rep\_4 & 33 & 27 & 28 & 31 & 28\\
+\hline
+Rep\_5 & 26 & 29 & 29 & 33 & 30\\
+\hline
+\end{tabular}
+
+Temperatura
+
+\begin{tabular}{l|r|r|r|r|r}
+\hline
+replica & 1h & 2h & 3h & 4h & 5h\\
+\hline
+Rep\_1 & 19 & 23 & 21 & 22 & 19\\
+\hline
+Rep\_2 & 22 & 22 & 17 & 26 & 23\\
+\hline
+Rep\_3 & 17 & NA & 22 & 26 & 26\\
+\hline
+Rep\_4 & 23 & 24 & 20 & 24 & 20\\
+\hline
+Rep\_5 & 20 & 17 & 19 & 23 & 19\\
+\hline
+\end{tabular}
+
+pH
+
+\begin{tabular}{l|r|r|r|r|r}
+\hline
+replica & 1h & 2h & 3h & 4h & 5h\\
+\hline
+Rep\_1 & 7.63 & 6.51 & 7.52 & 6.21 & 6.90\\
+\hline
+Rep\_2 & 6.36 & 7.42 & 7.73 & 7.27 & 6.55\\
+\hline
+Rep\_3 & 6.02 & 6.56 & 7.35 & 6.71 & 7.62\\
+\hline
+Rep\_4 & 7.30 & 7.57 & NA & 6.79 & 7.66\\
+\hline
+Rep\_5 & 6.38 & 6.24 & 7.84 & 7.87 & 7.21\\
+\hline
+\end{tabular}
+
+Mortalidade
+
+\begin{tabular}{l|r|r|r|r|r}
+\hline
+replica & 1h & 2h & 3h & 4h & 5h\\
+\hline
+Rep\_1 & 27 & 51 & 67 & 59 & 16\\
+\hline
+Rep\_2 & 40 & 52 & 30 & NA & 43\\
+\hline
+Rep\_3 & 27 & 77 & 35 & 37 & 42\\
+\hline
+Rep\_4 & 30 & 84 & 30 & 34 & 45\\
+\hline
+Rep\_5 & NA & 73 & 69 & 17 & 26\\
+\hline
+\end{tabular}
+
+Produza a seguinte planilha. Tente executar com mínimo de funções possíveis. \textbf{Dica: converta cada tabela em uma planilha e as una como colunas}. \textbf{``Utilize o operador pipe: \%\textgreater{}\%''}. \textbf{Se houver observações iguais remova-as}
+
+\begin{tabular}{l|l|r|r|r|r}
+\hline
+replica & hora & salinidade & temperatura & pH & mortalidade\\
+\hline
+Rep\_1 & 1h & 28 & 19 & 7.63 & 27\\
+\hline
+Rep\_1 & 2h & 26 & 23 & 6.51 & 51\\
+\hline
+Rep\_1 & 3h & 32 & 21 & 7.52 & 67\\
+\hline
+Rep\_1 & 4h & 26 & 22 & 6.21 & 59\\
+\hline
+Rep\_1 & 5h & 29 & 19 & 6.90 & 16\\
+\hline
+Rep\_2 & 1h & 25 & 22 & 6.36 & 40\\
+\hline
+Rep\_2 & 2h & 27 & 22 & 7.42 & 52\\
+\hline
+Rep\_2 & 3h & 32 & 17 & 7.73 & 30\\
+\hline
+Rep\_2 & 5h & 25 & 23 & 6.55 & 43\\
+\hline
+Rep\_3 & 1h & 29 & 17 & 6.02 & 27\\
+\hline
+Rep\_3 & 3h & 31 & 22 & 7.35 & 35\\
+\hline
+Rep\_3 & 4h & 25 & 26 & 6.71 & 37\\
+\hline
+Rep\_4 & 1h & 33 & 23 & 7.30 & 30\\
+\hline
+Rep\_4 & 2h & 27 & 24 & 7.57 & 84\\
+\hline
+Rep\_4 & 4h & 31 & 24 & 6.79 & 34\\
+\hline
+Rep\_4 & 5h & 28 & 20 & 7.66 & 45\\
+\hline
+Rep\_5 & 2h & 29 & 17 & 6.24 & 73\\
+\hline
+Rep\_5 & 3h & 29 & 19 & 7.84 & 69\\
+\hline
+Rep\_5 & 4h & 33 & 23 & 7.87 & 17\\
+\hline
+Rep\_5 & 5h & 30 & 19 & 7.21 & 26\\
+\hline
+\end{tabular}
 
 \hypertarget{resposta-exercuxedcio}{%
 \chapter{Resposta exercício}\label{resposta-exercuxedcio}}
